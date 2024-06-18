@@ -80,6 +80,11 @@ jobs:
         node-version: 22.1.0
         cache: 'pnpm'
     
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV    
+
     - name: Restore pnpm cache
       uses: actions/cache/restore@v4
       with:

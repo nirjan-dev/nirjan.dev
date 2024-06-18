@@ -1,0 +1,80 @@
+name: Preview deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  Build-Site:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Cache dist directory
+      uses: actions/cache@v4
+      with:
+        path: dist
+        key: ${{ runner.os }}-dist
+      
+    - name: Cache .vercel directory
+      uses: actions/cache@v4
+      with:
+        path: .vercel
+        key: ${{ runner.os }}-vercel
+    
+    - name: Install Vercel CLI
+      run: npm install --global vercel@latest
+
+    - name: Pull Vercel Environment Information
+      run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+    - name: Build Project Artifacts
+      run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+  Test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    
+    - name: Install dependencies
+      run: npm install -g pnpm && pnpm install
+    
+    - name: Install Playwright Browsers
+      run: pnpm exec playwright install --with-deps
+
+    - name: Restore dist directory
+      uses: actions/cache/restore@v4
+      with:
+        path: dist
+        key: ${{ runner.os }}-dist
+    
+    - name: Run Playwright tests
+      run: pnpm exec playwright test
+    
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
+  
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Restore .vercel directory
+        uses: actions/cache/restore@v4
+        with:
+          path: .vercel
+          key: ${{ runner.os }}-vercel
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}

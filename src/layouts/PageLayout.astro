@@ -1,0 +1,21 @@
+---
+import Header from "~/components/Header.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Nirjan.dev</title>
+  </head>
+  <body>
+    <Header />
+    <div class="container px-4 py-3">
+      <main id="main-content">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

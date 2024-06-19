@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import logo from "~/assets/img/logo.svg";
+---
+
+<div>
+  <div class="container flex justify-between px-4 py-2">
+    <a href="/">
+      <Image loading="eager" height={30} src={logo} alt="Nirjan logo" />
+    </a>
+    <nav>
+      <ul class="flex gap-10">
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/tools">Tools</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

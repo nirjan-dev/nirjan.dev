@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import PageLayout from "~/layouts/PageLayout.astro";
+
+export const getStaticPaths = (async () => {
+  const blogPosts = await getCollection("blog", ({ data }) => {
+    return data.isDraft !== true;
+  });
+
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+
+const { Content } = await post.render();
+---
+
+<PageLayout>
+  <h1 class="text-4xl font-bold max-w-prose mx-auto text-center mb-8">
+    {post.data.title}
+  </h1>
+
+  <div class="max-w-prose mx-auto">
+    <p class="text-lg bg-purple-50 p-3 rounded-lg my-3">{post.data.excerpt}</p>
+
+    <Content />
+  </div>
+</PageLayout>

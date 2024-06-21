@@ -1,7 +1,37 @@
 ---
 import PageLayout from "~/layouts/PageLayout.astro";
+import { getCollection } from "astro:content";
+
+let blogPosts = await getCollection("blog", ({ data }) => {
+  return data.isDraft !== true;
+});
+
+blogPosts = blogPosts.sort((a, b) => {
+  return (
+    new Date(b.data.publishDate).valueOf() -
+    new Date(a.data.publishDate).valueOf()
+  );
+});
 ---
 
 <PageLayout>
-  <h1>Welcome to Nirjan's blog page</h1>
+  <h1 class="text-4xl font-bold mb-6 text-center">
+    Welcome to Nirjan's blog page
+  </h1>
+
+  <ul class="grid gap-4 max-w-prose mx-auto">
+    {
+      blogPosts.map((post) => (
+        <li>
+          <div class="p-4 grid gap-2 rounded-lg h-full">
+            <h3 class="text-xl text-blue-600 font-bold">
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h3>
+            <p>{new Date(post.data.publishDate).toLocaleDateString()}</p>
+            <p>{post.data.excerpt}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
 </PageLayout>

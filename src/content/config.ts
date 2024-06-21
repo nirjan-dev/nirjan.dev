@@ -16,6 +16,8 @@ const blogCollection = defineCollection({
         "debugging",
         "node.js",
         "review",
+        "learning",
+        "management",
       ])
     ),
     image: z

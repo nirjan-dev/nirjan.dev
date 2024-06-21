@@ -1,0 +1,79 @@
+---
+title: 11 easy tips to fix bugs and debug your code faster
+excerpt: I have a love-hate relationship with coding bugs. I hate finding and debugging them, but I love the moment that I find a fix for it. As my career progresses, I've found some things that I do over and over that help me fix bugs faster. In this post, I'll list the debugging tips that I use the most.
+seoDescription: As my career progresses, I've found some things that I do over and over that help me fix bugs faster. In this post, I'll list 11easy debugging tricks to find solutions to coding problems faster.
+publishDate: '2022-03-25'
+tags: ['debugging']
+---
+
+
+1\. Gather info
+---------------
+
+Your dev tools are your best friends during this step. Look for error messages in the console or your logging tool of choice. Try to reproduce your error by focusing on certain parts of your app. Look at the end-game. Ask yourself what are you trying to do? Try to be focused instead of looking everywhere. The better you get at filtering logs, the easier this will get.
+
+Can you build a simpler version some place else like [codepen](https://codepen.io/), [codesandbox](https://codesandbox.io/), [stackblitz](https://stackblitz.com/), etc?
+
+You need to be analytical in this step of the process and think like a detective.
+
+2\. Go through your code
+------------------------
+
+Actually read your code – don't skim it. Think about how the code is actually working. Follow the control flow of the code. If you have a whiteboard or even a notebook, then use that in this step. Try to visualize your code and create a mental model of how it's working. Can you spot any logical issues with your code? This step can also help you figure out if you need to refactor your code, too. If it's hard to read and reason about then when you're done fixing the bug, you should also make a note of coming back to this and refactoring it.
+
+3\. Stay calm and take a break
+------------------------------
+
+It's easy to get nervous or worked up when the stakes are high, but panicking won't help. Don't stress out about finding the bug. Take a 10-minute walk or take deep breaths, take a shower, stretch, anything that will help clear your mind.
+
+Sometimes our subconscious is a much better coder than we are. We can stumble upon the fix when we least expect it. This is also a good time to ask for help if you are working in a team. Normally, I ask for help if I get stuck on a problem for more than **2 hours without any progress**.
+
+You don't want to go to your teammates for every small issue. But there is also no point in wasting hours of your time if they can help you fix it in minutes.
+
+4\. Make it simple
+------------------
+
+Make your code simpler, break it into smaller parts. Limit the number of inputs and outputs. Get it working in a limited capacity. (e.g. safe mode, Codepen, etc.)
+
+Comment out major sections of code until you have a working example. Ask yourself, does this issue exist outside the framework? Does this work in a clean environment? Sometimes the bugs can exist outside your code. It might just be a bug in a third party library.
+
+5\. Test in all environments
+----------------------------
+
+Testing in different environments can help you discover the cause of your errors quicker. You should be able to take a look at the problem at different levels. Does it work locally but not on the server? Does it work in other browsers? Is it breaking only on mobile and not desktop? Tools like [lambdatest](https://www.lambdatest.com/) and [browserstack](https://www.browserstack.com/) are great for this.
+
+6\. Talk it over
+----------------
+
+Getting the perspective of another developer can be extremely helpful. Even talking to a non developer about what you are trying to do can sometimes help you get to the root of your issue. Even if you're alone, just saying the problem out loud can be helpful.
+
+7\. Use Git
+-----------
+
+Commit your code often. If you're worrying about having too many commits in your branch, then you can [squash them](https://www.git-tower.com/learn/git/faq/git-squash/) when you're done. If your code commits are up-to-date, you can change code without fear of deleting things. Just revert to a previous commit once you find the issue and fix it. You can use git features like [stashing](https://www.git-scm.com/docs/git-stash) to try out different things.
+
+8\. Don't jump to solutions
+---------------------------
+
+Take the time to dissect the problem. Question your assumptions. If you're thinking It can't possibly be a problem with x, then it might actually be a problem with x. Nothing should be off the table. Sometimes the cause of your bugs are in the place you least expected.
+
+9\. Get good at pattern matching
+--------------------------------
+
+This comes with experience. After fixing a lot of bugs throughout your career, you'll notice yourself asking the same questions. When did this problem start? Did we deploy any code? Did we change any logic? X bugs tend to happen when Y happens. This is mostly about figuring out the right questions to ask.
+
+10\. Document your bug fixes
+----------------------------
+
+This is related to the last tip. It's not good enough to only recognize the questions you're asking to find the bugs. You should also document it somehow. List your errors, their causes, and their solution somewhere. You never know when you will run into the same problem again. You don't have to list every bug, only the ones that took a long time to find the fix for.
+
+> I like to list all the bugs and their fixes that I've faced before using GitHub issues. You can use the labels to organize them and the search feature to find the bug fix you're looking for.
+
+11\. Google
+-----------
+
+Get good at googling, being able to describe your problem is key. Learn to search for keywords that will help you find solutions quicker. Also, learn to search in sites like [stackoverflow](https://stackoverflow.com/), GitHub issue pages, discord channels, etc.
+
+Most likely someone has already faced a similar problem. So, there is already a fix for it somewhere on the internet.
+
+Do you have any other debugging tips? I would love to hear about it in the comments section. Thanks for reading.

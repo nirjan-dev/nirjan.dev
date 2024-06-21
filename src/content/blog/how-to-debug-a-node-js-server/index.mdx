@@ -1,30 +1,31 @@
 ---
 title: How to debug a Node.js Server
 tags: ['javascript', 'debugging', 'node.js']
-publishDate: "2022-07-08"
+publishDate: "2023-12-18"
 excerpt: Using the debugger to go through your code line by line and see your variable values can save you lots of time. In front-end JavaScript, you can add a debugger statement to trigger the debugger. But how can you use the debugger on the server-side with node.js? Here’s a quick guide on how you can debug a node.js server. I will go through the steps to debug it in the terminal, with the chrome DevTools and with VS Code.
+seoDescription: A guide on how to debug JavaScript apps on the server-side using Node.js. Learn how to debug node.js with the node.js debugger, Chrome DevTools and VS Code.
 ---
 
 You can grab the [final demo app](https://github.com/nirjan-dev/debugging-node-server) from my github profile.
 
-**How to use the node.js debugger**
------------------------------------
+## How to use the node.js debugger
 
 Node includes a built-in debugger that you can use on the command line. You can do most of the debugging actions that you normally do in the chrome DevTools or the VS Code debugger directly from the command line. Let’s create a very basic node HTTP server to try it out.
 
-### **How to set up a basic node.js server**
+### How to set up a basic node.js server
 
 I’m using the following tools to setup the HTTP server in node.js:
 
-*   NPM v8.19.2 (you don’t actually need it, you can just run the commands through node)
-*   [Node](https://nodejs.org/en) v20.10.0
-*   [VS Code](https://code.visualstudio.com/)
+- NPM v8.19.2 (you don’t actually need it, you can just run the commands through node)
+- [Node](https://nodejs.org/en) v20.10.0
+- [VS Code](https://code.visualstudio.com/)
 
 You can follow these steps to get the server running
 
-*   Initialize the node project with `npm init` (you can use the default options for everything)
-*   Create an **index.mjs** file and paste in the following
+- Initialize the node project with `npm init` (you can use the default options for everything)
+- Create an **index.mjs** file and paste in the following
 
+```js
     import http from "node:http";
     const PORT = 3000;
     const HOST_NAME = "localhost";
@@ -48,34 +49,40 @@ You can follow these steps to get the server running
       console.log(`Server running at http://${HOST_NAME}:${PORT}/`);
     });
     
+```
 
-*   Here’s a brief overview of the code
-    *   we import the http module from node
-    *   we create a fetchData function which simulates getting data from somewhere else
-    *   we create the server with a handler that’s setup to handle only the root endpoint
-    *   we setup the server to listen to port 3000 on localhost
-*   You can now add this to the **scripts** section of the package.json file to setup a start command
+-   Here’s a brief overview of the code
+    -   we import the http module from node
+    -   we create a fetchData function which simulates getting data from somewhere else
+    -   we create the server with a handler that’s setup to handle only the root endpoint
+    -   we setup the server to listen to port 3000 on localhost
+-   You can now add this to the **scripts** section of the package.json file to setup a start command
 
+```json
     "start": "node index.mjs"
+```
 
-*   Then, run the command through npm
+-   Then, run the command through npm
 
     npm start
 
-*   when you visit **localhost:3000** you should see hello world after 3 seconds.
+-   when you visit **localhost:3000** you should see hello world after 3 seconds.
 
-### How to start **the node.js debugger**
+### How to start the node.js debugger
 
 To start the node debugger, you have to add the inspect argument to your node command. So, you can add a `start:debug` command to the package.json script section like this:
 
-    "start:debug": "node inspect index.mjs"
+```json
+"start:debug": "node inspect index.mjs"
+```
 
 If you run npm run start:debug then the debugger will pause on the first line of the file. To pause it on the debugger statement, you need to set the **NODE\_INSPECT\_RESUME\_ON\_START** variable to 1.
-
-    "start:debug": "NODE_INSPECT_RESUME_ON_START=1 node inspect index.mjs"
-
+```json
+"start:debug": "NODE_INSPECT_RESUME_ON_START=1 node inspect index.mjs"
+```
 Now, let’s update out code to add a few debugger statements.
 
+```js
     import http from "node:http";
     const PORT = 3000;
     const HOST_NAME = "localhost";
@@ -101,10 +108,10 @@ Now, let’s update out code to add a few debugger statements.
       debugger;
       console.log(`Server running at http://${HOST_NAME}:${PORT}/`);
     });
-    
+```
 
 When you run the start:debug command again, you'll see it pause after the server starts listening on the port.
-
+```bash
     ❯ npm run start:debug
     
     > debugging-node-server@1.0.0 start:debug
@@ -123,19 +130,21 @@ When you run the start:debug command again, you'll see it pause after the server
      24   console.log(`Server running at http://${HOST_NAME}:${PORT}/`);
      25 });
     debug>
-
+```
 You can use the **help** command to see all the commands that you can use with this CLI debugger. The most useful ones will be **c** to continue and **repl** to go into the repl mode. Inside the repl mode, you can check the values of the variables in your program. Try to get to the last debugger statement and go into the repl mode to check the value of **someDataFromDatabase**. You just have to type the variable name and press enter in the repl mode to see it’s value. To actually reach that debugger line, you’ll also need to trigger the handler by visiting **localhost:3000** in your browser.
 
 You can checkout [the full debugger docs on the node documentation](https://nodejs.org/docs/latest-v20.x/api/debugger.html) to see what else you can do with it.
 
+## How to debug node.js using the chrome DevTools
+
 If you’re already used to the chrome DevTools debugger, then you can also debug your node apps using that.
 
 To setup debugging in chrome, you need to use the **\--inspect** flag. Let’s setup another NPM command in your package.json to do this.
-
+```json
     "start:chrome-debug": "node --inspect index.mjs"
-
+```
 Now, when you run it in your terminal, you should see a similar message.
-
+```bash
     ❯ npm run start:chrome-debug
     
     > debugging-node-server@1.0.0 start:chrome-debug
@@ -145,11 +154,11 @@ Now, when you run it in your terminal, you should see a similar message.
     For help, see: https://nodejs.org/en/docs/inspector
     Server running at http://localhost:3000/
     Debugger attached.
-
+```
 You can visit **chrome://inspect** in chrome to view your app using the chrome DevTools. You should see your app listed in the **Remote Target** section. Just click on inspect option and then you should see the chrome DevTools open up. Now you can debug your app with the chrome debugger.
 
-**How to debug node.js in VS Code**
------------------------------------
+## How to debug node.js in VS Code
+
 
 The VS Code debugger uses the CLI debugger under the hood and gives you the same options inside your editor. To start, you can go to the debugger window (Ctrl + Shift + D). If you’re doing this for the first time in your app then it will prompt you to create a launch.json file.
 
@@ -159,14 +168,11 @@ You can read more about the different options with the debugger on the [VS code 
 
 I would recommend the following simple changes to the launch.json file for this demo server.
 
-*   Update the **program** property to your server entry file so the debugger will run that file regardless of what file you have currently opened . The default option will try to run the currently opened file with node instead.
-
+-   Update the **program** property to your server entry file so the debugger will run that file regardless of what file you have currently opened . The default option will try to run the currently opened file with node instead.
+```json
     "program": "${workspaceRoot}/index.mjs",
-
-*   If you’re using something like [NVM](https://github.com/nvm-sh/nvm) to manage your node versions then you can use the **runtimeVersion** property to match it to your version of node.
-
+```
+-   If you’re using something like [NVM](https://github.com/nvm-sh/nvm) to manage your node versions then you can use the **runtimeVersion** property to match it to your version of node.
+```json
     "runtimeVersion": "20.10.0"
-
-Hopefully, this guide will help you debug your node.js apps faster. How has your experience been when debugging JavaScript apps on the server-side? Let me know in the comments.
-
-If you enjoyed reading this post and want to stay updated on similar content then subscribe to my newsletter. No spam, just good stuff. 🙏 Unsubscribe anytime.
+```

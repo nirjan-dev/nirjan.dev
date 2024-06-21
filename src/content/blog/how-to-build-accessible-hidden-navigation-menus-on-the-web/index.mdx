@@ -1,7 +1,7 @@
 ---
 title: How to build accessible hidden navigation menus on the web
 tags: ['accessibility', 'css','ux']
-publishDate: '2023-07-15'
+publishDate: '2021-07-15'
 excerpt: Menus are all over the web, but a lot of them are inaccessible. As the people building the web, we need to make sure that everyone is able to use our sites without a problem. That's why creating accessible menu's should be part of every web developer's toolkit. In this post, I'll show you the CSS, JavaScript, HTML and ARIA attributes that you need to know to create accessible menus.
 seoDescription: In this post, I'll show you the CSS, JavaScript, HTML and ARIA attributes that you need to know to create accessible menus.
 ---
@@ -59,6 +59,8 @@ You should always try to find the correct HTML tag for your use-case, instead of
 ```
 > Note: I'm placing the Menu button inside the nav tag. This is to ensure that the people who move to the nav tag using a shortcut won't just find a hidden list. They'll find the button to open the nav menu. You should also make sure that the focus order makes sense. Here the next item that is focusable after the menu button is the first link in the menu.
 
+## Hiding the menu
+
 You need to make sure that the hidden menu is not accessible without opening it. You should use the display or visibility property to hide the menu. This makes sure that the hidden menu isn't focused when tabbing and aren't read by screen readers.
 
 Be careful if you're only using transforms, width, opacity or any other similar properties to hide the menu. Screen readers can still access them, and users can reach them by tabbing. So, you need to use the [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) or [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) property to hide the menu.
@@ -79,6 +81,8 @@ In this example, I'm using a high negative transformY value to hide the menu. So
     }
     
 ```
+## Communicating Menu States
+
 The next thing you need to do is make sure all the users of your site are aware of the menu's open and closed states. This is simple for sighted users as they can just see the menu open and close, but you also need to make sure any users with visual impairments can tell the current state of the menu.
 
 We need to add an aria-expanded attribute to the button. This informs the user about the current state of the button and lets them know we can open the menu using the button. We need to change the value of aria-expanded to true when it's open and to false when it's closed.
@@ -87,7 +91,9 @@ We need to add an aria-expanded attribute to the button. This informs the user a
       Menu
       <i class="gg-menu menu-btn__icon"></i>
     </button>
+```
 
+```js
     function toggleAriaExpanded() {
       const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
       

@@ -10,13 +10,14 @@ interface Heading {
 }
 
 interface tocItem extends Heading {
-  subheadings?: tocItem[];
+  subheadings: tocItem[];
 }
 function buildToc(headings: Heading[]) {
   const toc: tocItem[] = [];
   const parentHeadings = new Map();
 
-  headings.forEach((heading) => {
+  headings.forEach((h) => {
+    const heading = { ...h, subheadings: [] };
     parentHeadings.set(heading.depth, heading);
 
     if (heading.depth === 2) {
@@ -42,11 +43,16 @@ function buildToc(headings: Heading[]) {
           >
             {heading.text}
           </a>
-          {heading.subheadings && (
+          {heading.subheadings.length > 0 && (
             <ul class="ml-4">
               {heading.subheadings.map((subheading) => (
                 <li>
-                  <a href={`#${subheading.slug}`}>{subheading.text}</a>
+                  <a
+                    class="py-1 inline-block text-blue-700 font-medium"
+                    href={`#${subheading.slug}`}
+                  >
+                    {subheading.text}
+                  </a>
                 </li>
               ))}
             </ul>

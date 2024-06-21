@@ -1,0 +1,161 @@
+---
+title: Destructure and rename variables with JavaScript, plus other cool JS destructuring use cases
+publishDate: '2023-06-12'
+tags: ['javascript']
+excerpt: Want to simplify your JavaScript code and extract the values you need from objects and arrays easily? Learn how to use destructuring! In this article, I'll show you how to destructure objects and arrays, rename variables, set default values, and merge arrays and objects. Plus, I'll also cover how to use destructuring in practical scenarios, such as extracting data from APIs and handling function parameters.
+seoDescription: In post, you'll learn how to extract the values you need from objects and arrays easily with destructuring! It covers JavaScript destructuring basics, including object and array destructuring, renaming variables, setting default values, and merging arrays and objects.
+---
+
+
+## Destructuring and Renaming Variables in JavaScript
+
+Destructuring is a useful feature in JavaScript which lets you assign variables to the values of object properties and array items easily. It is a way of unpacking data from objects and arrays into different variables.
+
+This allows you to create new variables from object properties and array items. In JavaScript, you can destructure objects with curly braces {} and arrays with brackets \[\].
+
+## JavaScript Object Destructuring Syntax
+
+Destructuring can be used in lots of ways, but the most common usage is to extract properties from an object or items from an array.
+
+For objects, the syntax is as follows:
+
+```js
+const person = { name: 'John', age: 30 }; const { name, age } = person;
+```
+Here, we’re destructuring the `person` object and assigning its `name` and `age` property values to a `name` and `age` variable.
+
+> Note: Destructuring doesn’t actually change the original object at all. It only copies the value of the object properties.
+
+## JavaScript Array Destructuring Syntax
+
+For arrays, the syntax is:
+```js
+const numbers = [1, 2, 3, 4, 5]; const [first, second] = numbers;
+```
+In the example above, we use destructuring to assign the first two items from the `numbers` array to the `first` and `second` variables.
+
+## Storing the remaining values in a separate variable
+
+You can use the `...` rest operator to assign the remaining properties or items in an array to another variable.
+```js
+const person = { name: 'John', age: 30, country: 'USA', city: 'New York' };
+const { name, age, ...remainingProperties } = person;
+console.log(remainingProperties) // {country: 'USA', city: 'New York'}
+
+const numbers = [1, 2, 3, 4, 5];
+const [first, second, ...remainingItems] = numbers;
+console.log(remainingItems) // [3,4,5]
+```
+Whatever variable you put the `...` rest operator in front of, it will have the rest of the values that you didn’t destructure. It will create a new object when destructuring an object and a new array when destructuring an array.
+
+## Renaming variables using destructuring
+
+One of the useful features of destructuring is that it allows you to rename variables during the assignment. You can use the colon `:` to rename a variable.
+
+For example:
+```js
+const person = { name: 'John', age: 30 };
+const { name: personName, age: personAge } = person;
+```
+In this example, we are renaming the `name` property to `personName` and the `age` property to `personAge`. This is useful when you want to rename a property to something more specific or if there is another variable in the [current JavaScript scope](https://nirjan.dev/blog/understanding-lexical-scope-and-closures-in-3-minutes) with the same name.
+
+> Note: the right hand-side will be the new name that you want to use, and the left hand-side will be the name of the property you want to destructure. `{name: firstName} means {name as firstName}`
+
+## Default values with destructuring
+
+You can also set default values for variables in case the value is undefined or null. You can do this by using the equal sign `=` after the variable name.
+
+For example:
+```js
+const person = { name: 'John' };
+const { name, age = 30 } = person;
+```
+In this example, if the `age` property is not defined in the `person` object, it will default to `30`. This feature is particularly useful when you need to handle optional properties in an object.
+
+## Practical examples of destructuring in JavaScript
+
+Destructuring can be used in many practical scenarios such as extracting data from APIs, handling function parameters, and more. Here are a few cool tricks you can do with destructuring in JavaScript.
+
+### Extracting function arguments
+
+You can use destructuring to quickly create variables from an object parameter for a function.
+```js
+function getFullName({ firstName, lastName }) {
+    return `${firstName} ${lastName}`;
+}
+
+const person = { firstName: 'John', lastName: 'Doe', age: 30 };
+const fullName = getFullName(person);
+```
+In this example, we are using destructuring to extract the `firstName` and `lastName` properties from the `person` object to get the full name. This makes the code more readable, and the function parameter is self-documenting.
+
+Overall, destructuring and renaming variables in JavaScript is a powerful feature that can simplify your code and make it more readable. With destructuring, you can extract the values you need from objects and arrays with ease, and with renaming, you can make your code more descriptive and self-documenting.
+
+### Removing some properties from an object
+
+To remove some properties from an object, you can use destructuring and the rest operator.
+```js
+const person = { name: 'John', age: 30, country: 'USA', city: 'New York' };
+const { age, ...personWithoutAge } = person;
+console.log(personWithoutAge) // {name: 'John', country: 'USA', city: 'New York'}
+```
+    
+
+In this example, we are removing the `age` property from the `person` object and creating a new object without it. This can be useful when you want to pass an object to a function, but don't want to include certain properties.
+
+### Merging arrays and objects
+
+Destructuring is also useful when you want to merge objects or arrays. You can use the spread operator to merge objects or arrays together.
+```js
+const person = { name: 'John', age: 30 };
+const address = { country: 'USA', city: 'New York' };
+const mergedPerson = { ...person, ...address };
+console.log(mergedPerson) // {name: 'John', age: 30, country: 'USA', city: 'New York'}
+
+const numbers1 = [1, 2, 3];
+const numbers2 = [4, 5, 6];
+const mergedNumbers = [...numbers1, ...numbers2];
+console.log(mergedNumbers) // [1, 2, 3, 4, 5, 6]
+```
+Here, we are using the spread operator to merge the `person` and `address` objects into a new object. We are also using the spread operator to merge two arrays into a new array. This is a concise way of merging objects and arrays without having to write a lot of code.
+
+### Multiple return values
+
+Finally, destructuring can be used to return multiple values from a function.
+```js
+function getValues() {
+    return [1, 2, 3];
+}
+
+const [a, b, c] = getValues();
+console.log(a, b, c) // 1 2 3
+```
+    
+
+In this example, we are using destructuring to assign the values returned from the `getValues` function to the variables `a`, `b`, and `c`. This is a convenient way to return multiple values from a function without having to pack them into an object or array.
+
+If you are using react, then this syntax will be familiar. It is used to destructure the return values of `useState` and other react hooks.
+
+Here's an example of using `useState` with destructuring in a React component:
+```js
+import React, { useState } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  );
+}
+```
+
+## Summary
+
+JavaScript destructuring allows for easy assignment of object properties and array items to variables. Renaming variables, setting default values, and merging arrays and objects are all possible with destructuring. It can be used in practical scenarios such as extracting data from APIs and handling function parameters. Destructuring is also used in React hooks such as `useState`. What are your favourite ways of using destructuring? Let me know in the comments below.

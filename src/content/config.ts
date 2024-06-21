@@ -5,7 +5,19 @@ const blogCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    tags: z.array(z.string()),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+    tags: z.array(
+      z.enum([
+        "accessibility",
+        "css",
+        "ux",
+        "javascript",
+        "debugging",
+        "node.js",
+        "review",
+      ])
+    ),
     image: z
       .object({
         src: z.string(),

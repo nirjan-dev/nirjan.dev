@@ -1,6 +1,8 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
+import Prose from "~/components/Prose.astro";
+import TableOfContents from "~/components/TableOfContents.astro";
 import PageLayout from "~/layouts/PageLayout.astro";
 
 export const getStaticPaths = (async () => {
@@ -15,18 +17,50 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
+const { Content, headings } = await post.render();
 
-const { Content } = await post.render();
+function formatDate(date: Date) {
+  return date.toLocaleDateString("en-us", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
+  return updateDate
+    ? `Last updated on ${formatDate(updateDate)}`
+    : `Published on ${formatDate(publishDate)}`;
+}
 ---
 
 <PageLayout>
   <h1 class="text-4xl font-bold max-w-prose mx-auto text-center mb-8">
     {post.data.title}
   </h1>
+  <div>
+    <p class="text-lg text-center my-3">
+      {showLastUpdateDate(post.data.publishDate, post.data.updateDate)}
+    </p>
+
+    <div class="my-4 text-center mx-auto">
+      {
+        post.data.tags.map((tag) => (
+          <a href="#" class="bg-purple-50 px-3 py-1 rounded mx-3">
+            {tag}
+          </a>
+        ))
+      }
+    </div>
+  </div>
 
   <div class="max-w-prose mx-auto">
-    <p class="text-lg bg-purple-50 p-3 rounded-lg my-3">{post.data.excerpt}</p>
+    <p class="text-lg bg-purple-100 p-3 rounded-lg my-3">{post.data.excerpt}</p>
 
-    <Content />
+    <TableOfContents headings={headings} />
+
+    <Prose>
+      <Content />
+    </Prose>
   </div>
 </PageLayout>

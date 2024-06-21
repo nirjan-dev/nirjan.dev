@@ -1,0 +1,58 @@
+---
+const { headings } = Astro.props;
+
+const toc = buildToc(headings);
+
+interface Heading {
+  depth: number;
+  text: string;
+  slug: string;
+}
+
+interface tocItem extends Heading {
+  subheadings?: tocItem[];
+}
+function buildToc(headings: Heading[]) {
+  const toc: tocItem[] = [];
+  const parentHeadings = new Map();
+
+  headings.forEach((heading) => {
+    parentHeadings.set(heading.depth, heading);
+
+    if (heading.depth === 2) {
+      toc.push(heading);
+    } else {
+      parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+    }
+  });
+
+  return toc;
+}
+---
+
+<h2 class="text-xl font-bold mb-1 mt-4">Table of Contents</h2>
+<nav class="mb-6">
+  <ul>
+    {
+      toc.map((heading) => (
+        <li>
+          <a
+            class="py-1 inline-block text-blue-700 font-medium"
+            href={`#${heading.slug}`}
+          >
+            {heading.text}
+          </a>
+          {heading.subheadings && (
+            <ul class="ml-4">
+              {heading.subheadings.map((subheading) => (
+                <li>
+                  <a href={`#${subheading.slug}`}>{subheading.text}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</nav>

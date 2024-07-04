@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import { title } from "process";
 
 const blogCollection = defineCollection({
@@ -36,8 +36,16 @@ const blogCollection = defineCollection({
   }),
 });
 
+const featuredPosts = defineCollection({
+  type: "content",
+  schema: z.object({
+    featuredPosts: z.array(reference("blog")),
+  }),
+});
+
 //  Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   blog: blogCollection,
+  featured: featuredPosts,
 };

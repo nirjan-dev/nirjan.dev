@@ -1,28 +1,33 @@
 ---
+import { getEntry } from "astro:content";
+import { getEntries } from "astro:content";
 import { getCollection } from "astro:content";
 import PageLayout from "~/layouts/PageLayout.astro";
 
-let blogPosts = await getCollection("blog", ({ data }) => {
-  return data.isDraft !== true;
-});
+let featuredPostsCollection = await getEntry("featured", "index");
 
-blogPosts = blogPosts
-  .sort((a, b) => {
-    return (
-      new Date(b.data.publishDate).valueOf() -
-      new Date(a.data.publishDate).valueOf()
-    );
-  })
-  .splice(0, 3);
+let featuredPosts = await getEntries(
+  featuredPostsCollection.data.featuredPosts
+);
 ---
 
 <PageLayout>
-  <h1 class="text-4xl font-bold mb-6">Welcome to Nirjan's personal site</h1>
+  <h1 class="lg:text-6xl text-3xl font-bold mb-6">Hi, I'm Nirjan.</h1>
 
-  <h2 class="text-2xl font-bold mb-3">My Recent Posts</h2>
+  <p class="text-lg max-w-prose mb-8">
+    I am fullstack product developer who makes web & mobile apps that are fast,
+    user friendly and accessible. I am currently building <a
+      class="text-blue-700 underline font-semibold"
+      href="https://remotedevjobs.net/"
+    >
+      the best place to find remote dev jobs
+    </a>.
+  </p>
+
+  <h2 class="text-2xl font-bold mb-3">Featured Posts</h2>
   <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
     {
-      blogPosts.map((post) => (
+      featuredPosts.map((post) => (
         <li>
           <div class="p-4 bg-purple-200 grid gap-2 rounded-lg h-full">
             <h3 class="text-lg font-bold">

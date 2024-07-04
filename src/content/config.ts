@@ -28,7 +28,10 @@ const blogCollection = defineCollection({
       .optional(),
     isDraft: z.boolean().optional(),
     publishDate: z.string().transform((val) => new Date(val)),
-    updateDate: z.date().optional(),
+    updateDate: z
+      .string()
+      .transform((val) => new Date(val))
+      .optional(),
     excerpt: z.string(),
   }),
 });

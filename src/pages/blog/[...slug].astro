@@ -46,7 +46,10 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
     <div class="my-4 text-center mx-auto">
       {
         post.data.tags.map((tag) => (
-          <a href="#" class="bg-purple-50 px-3 py-1 rounded mx-3">
+          <a
+            href="#"
+            class="bg-primary-300 text-copy-950 px-3 py-1 rounded mx-3"
+          >
             {tag}
           </a>
         ))
@@ -55,7 +58,9 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
   </div>
 
   <div class="max-w-prose mx-auto">
-    <p class="text-lg bg-purple-100 p-3 rounded-lg my-3">{post.data.excerpt}</p>
+    <p class="text-lg bg-background-600 p-3 rounded-lg my-3">
+      {post.data.excerpt}
+    </p>
 
     <TableOfContents headings={headings} />
 

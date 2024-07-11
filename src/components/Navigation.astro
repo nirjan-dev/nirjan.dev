@@ -4,15 +4,23 @@ import logo from "~/assets/img/logo.svg";
 ---
 
 <div>
-  <div class="container flex justify-between px-4 py-2">
+  <div class="container flex justify-between mx-auto py-6 px-4">
     <a href="/">
       <Image loading="eager" height={30} src={logo} alt="Nirjan logo" />
     </a>
     <nav>
       <ul class="flex gap-10">
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/tools">Tools</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li>
+          <a class="text-primary-300 font-bold text-lg" href="/blog">Blog</a>
+        </li>
+        <li>
+          <a class="text-primary-300 font-bold text-lg" href="/tools">Tools</a>
+        </li>
+        <li>
+          <a class="text-primary-300 font-bold text-lg" href="/contact"
+            >Contact</a
+          >
+        </li>
       </ul>
     </nav>
   </div>

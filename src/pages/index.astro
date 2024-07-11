@@ -14,10 +14,10 @@ let featuredPosts = await getEntries(
 <PageLayout>
   <h1 class="lg:text-6xl text-3xl font-bold mb-6">Hi, I'm Nirjan.</h1>
 
-  <p class="text-lg max-w-prose mb-8">
+  <p class="text-lg max-w-prose mb-12">
     I am fullstack product developer who makes web & mobile apps that are fast,
     user friendly and accessible. I am currently building <a
-      class="text-blue-700 underline font-semibold"
+      class="font-semibold"
       href="https://remotedevjobs.net/"
     >
       the best place to find remote dev jobs
@@ -25,15 +25,13 @@ let featuredPosts = await getEntries(
   </p>
 
   <h2 class="text-2xl font-bold mb-3">Featured Posts</h2>
-  <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <ul class="grid grid-cols-1 md:grid-cols-3 gap-8 py-4 mb-4">
     {
       featuredPosts.map((post) => (
         <li>
-          <div class="p-4 bg-purple-200 grid gap-2 rounded-lg h-full">
-            <h3 class="text-lg font-bold">
-              <a class="text-blue-700" href={`/blog/${post.slug}`}>
-                {post.data.title}
-              </a>
+          <div class="py-6 px-8 bg-primary-950 grid gap-2 rounded-lg h-full">
+            <h3 class="text-xl font-bold">
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
             </h3>
             <p>{post.data.excerpt}</p>
             <p>{new Date(post.data.publishDate).toLocaleDateString()}</p>
@@ -43,7 +41,9 @@ let featuredPosts = await getEntries(
     }
   </ul>
 
-  <a href="/blog" class="text-blue-700 inline-block py-4 font-semibold"
+  <a
+    href="/blog"
+    class="inline-block py-4 font-semibold bg-primary-700 px-6 rounded-md text-copy-300"
     >View all posts</a
   >
 </PageLayout>

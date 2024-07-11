@@ -38,7 +38,7 @@ function buildToc(headings: Heading[]) {
       toc.map((heading) => (
         <li>
           <a
-            class="py-1 inline-block text-blue-700 font-medium"
+            class="py-1 inline-block text-primary-200 font-medium"
             href={`#${heading.slug}`}
           >
             {heading.text}
@@ -48,7 +48,7 @@ function buildToc(headings: Heading[]) {
               {heading.subheadings.map((subheading) => (
                 <li>
                   <a
-                    class="py-1 inline-block text-blue-700 font-medium"
+                    class="py-1 inline-block text-primary-200 font-medium"
                     href={`#${subheading.slug}`}
                   >
                     {subheading.text}

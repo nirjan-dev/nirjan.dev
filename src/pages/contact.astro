@@ -90,7 +90,7 @@ import { Icon } from "astro-icon/components";
 
     <button
       type="submit"
-      class="bg-primary max-w-24 p-2 rounded-sm text-white cursor-pointer"
+      class="bg-primary-700 max-w-24 p-2 rounded-md text-copy-200 cursor-pointer"
       >Send</button
     >
 
@@ -99,6 +99,11 @@ import { Icon } from "astro-icon/components";
 </PageLayout>
 
 <style>
+  input,
+  textarea {
+    @apply bg-background-600;
+  }
+
   .invalid-feedback,
   .empty-feedback {
     display: none;

@@ -10,12 +10,23 @@ import Header from "~/components/Header.astro";
     <meta name="generator" content={Astro.generator} />
     <title>Nirjan.dev</title>
   </head>
-  <body>
+  <body class="bg-background-900 text-copy-400">
     <Header />
-    <div class="container px-4 py-3">
+    <div class="container mx-auto px-4 py-3">
       <main id="main-content">
         <slot />
       </main>
     </div>
   </body>
 </html>
+
+<style is:global>
+  a {
+    @apply text-secondary-400 transition-colors;
+
+    &:hover,
+    &:focus {
+      @apply text-secondary-700;
+    }
+  }
+</style>

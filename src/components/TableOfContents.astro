@@ -31,14 +31,14 @@ function buildToc(headings: Heading[]) {
 }
 ---
 
-<h2 class="text-xl font-bold mb-1 mt-4">Table of Contents</h2>
-<nav class="mb-6">
+<h2 class="text-2xl font-bold mb-1 mt-4">Table of Contents</h2>
+<nav id="toc" class="mb-6">
   <ul>
     {
       toc.map((heading) => (
         <li>
           <a
-            class="py-1 inline-block text-primary-200 font-medium"
+            class="text-lg py-1 inline-block text-primary-200 font-medium"
             href={`#${heading.slug}`}
           >
             {heading.text}
@@ -48,7 +48,7 @@ function buildToc(headings: Heading[]) {
               {heading.subheadings.map((subheading) => (
                 <li>
                   <a
-                    class="py-1 inline-block text-primary-200 font-medium"
+                    class="text-base py-1 inline-block text-primary-200 font-medium"
                     href={`#${subheading.slug}`}
                   >
                     {subheading.text}
@@ -62,3 +62,46 @@ function buildToc(headings: Heading[]) {
     }
   </ul>
 </nav>
+
+<style>
+  #toc a {
+    @apply inline-flex items-center;
+    &::before {
+      content: "";
+      @apply transition-transform origin-top inline-block w-1 h-6 scale-y-0 bg-secondary-400 mr-2;
+    }
+  }
+
+  #toc a.active {
+    @apply text-secondary-400 border-secondary-400;
+
+    &::before {
+      @apply scale-y-100;
+    }
+  }
+</style>
+
+<script>
+  addIntersectionObserverForTOC();
+
+  function addIntersectionObserverForTOC() {
+    const observer = new IntersectionObserver((headings) => {
+      headings.forEach((heading) => {
+        const id = heading.target.getAttribute("id");
+
+        const link = document.querySelector(`#toc a[href="#${id}"]`);
+        if (!link) return;
+
+        const addRemove = heading.intersectionRatio > 0 ? "add" : "remove";
+
+        link.classList[addRemove]("active");
+      });
+    });
+
+    document
+      .querySelectorAll("#toc-article h2, #toc-article h3")
+      .forEach((heading) => {
+        observer.observe(heading);
+      });
+  }
+</script>

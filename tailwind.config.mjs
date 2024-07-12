@@ -1,3 +1,4 @@
+import defaultTheme from "tailwindcss/defaultTheme";
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -56,6 +57,9 @@ export default {
           900: "oklch(27.66% 0.02 297.54 / <alpha-value>)",
           950: "oklch(19.63% 0.012 300.48 / <alpha-value>)",
         },
+      },
+      fontFamily: {
+        sans: ["Nunito Variable", ...defaultTheme.fontFamily.sans],
       },
     },
   },

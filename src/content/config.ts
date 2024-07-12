@@ -1,5 +1,4 @@
 import { defineCollection, reference, z } from "astro:content";
-import { title } from "process";
 
 const blogCollection = defineCollection({
   type: "content",

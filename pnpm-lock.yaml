@@ -26,6 +26,9 @@ importers:
       astro-icon:
         specifier: ^1.1.0
         version: 1.1.0
+      headroom.js:
+        specifier: ^0.12.0
+        version: 0.12.0
       sharp:
         specifier: ^0.33.4
         version: 0.33.4
@@ -51,6 +54,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.13
         version: 0.5.13(tailwindcss@3.4.4)
+      '@types/headroom.js':
+        specifier: ^0.12.4
+        version: 0.12.4
       '@types/node':
         specifier: ^20.14.2
         version: 20.14.2
@@ -699,6 +705,9 @@ packages:
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
+  '@types/headroom.js@0.12.4':
+    resolution: {integrity: sha512-9Z6GHzjkq/MToVC0PNoiTMbeDZjjjKv6SCxv1XonspR7ssohjNb0+bg7K6Fbz5hDh/aFT9qLfhRa3jYYs4aMuQ==}
+
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
 
@@ -1323,6 +1332,9 @@ packages:
 
   hastscript@8.0.0:
     resolution: {integrity: sha512-dMOtzCEd3ABUeSIISmrETiKuyydk1w0pa+gE/uormcTpSYuaNJPbX1NU3JLyscSLjwAQM8bWMhhIlnCqnRvDTw==}
+
+  headroom.js@0.12.0:
+    resolution: {integrity: sha512-iXnAafUm3FdzfJ91uixLws2hkKI1jC8bAKK/pt7XYr8Ie1jO7xbK48Ycpl9tUPyBgkzuj1p/PhJS0fy4E/5anA==}
 
   html-escaper@3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
@@ -3265,6 +3277,8 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.2
 
+  '@types/headroom.js@0.12.4': {}
+
   '@types/mdast@4.0.4':
     dependencies:
       '@types/unist': 3.0.2
@@ -4101,6 +4115,8 @@ snapshots:
       hast-util-parse-selector: 4.0.0
       property-information: 6.5.0
       space-separated-tokens: 2.0.2
+
+  headroom.js@0.12.0: {}
 
   html-escaper@3.0.3: {}
 

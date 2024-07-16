@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import logo from "~/assets/img/logo.svg";
 ---
 
-<div>
+<div id="main-nav-headroom" class="bg-background-950">
   <div class="container flex justify-between mx-auto py-6 px-4">
     <a href="/">
       <Image loading="eager" height={30} src={logo} alt="Nirjan logo" />
@@ -25,3 +25,26 @@ import logo from "~/assets/img/logo.svg";
     </nav>
   </div>
 </div>
+
+<script>
+  import Headroom from "headroom.js";
+
+  const headroomElement = document.getElementById("main-nav-headroom");
+
+  if (headroomElement) {
+    const headroom = new Headroom(headroomElement);
+    headroom.init();
+  }
+</script>
+
+<style>
+  .headroom {
+    @apply will-change-transform transition-transform shadow-lg fixed top-0 z-50 left-0 w-full;
+  }
+  .headroom--pinned {
+    @apply translate-y-0;
+  }
+  .headroom--unpinned {
+    @apply -translate-y-full;
+  }
+</style>

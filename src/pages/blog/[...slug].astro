@@ -55,7 +55,7 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
 <PageLayout>
   <article id="toc-article">
     <h1
-      class="text-5xl mt-8 leading-snug font-extrabold max-w-prose mx-auto text-center mb-8"
+      class="text-3xl mt-4 md:text-5xl md:mt-8 leading-snug font-extrabold max-w-prose mx-auto text-center mb-8"
     >
       {post.data.title}
     </h1>
@@ -68,12 +68,14 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
           }</span
         >
       </p>
-      <div class="my-4 text-center mx-auto">
+      <div
+        class="my-4 text-center mx-auto flex max-w-full overflow-auto items-center justify-center"
+      >
         {
           post.data.tags.map((tag) => (
             <a
               href="#"
-              class="capitalize bg-primary-300 text-copy-950 px-3 py-1 rounded mx-3"
+              class="capitalize bg-primary-300 text-copy-950 px-1 md:px-3 md:py-1 rounded mx-3"
             >
               {tag}
             </a>
@@ -85,7 +87,7 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
       <TableOfContents headings={headings} />
     </div>
     <div class="lg:ml-96 lg:pl-6 max-w-prose mx-auto">
-      <p class="text-lg bg-background-600 p-3 rounded-lg my-6">
+      <p class="md:text-lg bg-background-600 p-3 rounded-lg my-6">
         {post.data.excerpt}
       </p>
       <Prose>

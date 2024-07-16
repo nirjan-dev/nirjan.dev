@@ -19,6 +19,24 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props;
 const { Content, headings } = await post.render();
 
+const relatedPosts = await getRelatedPosts(post.data.tags);
+
+async function getRelatedPosts(tags: string[]) {
+  const blogPosts = await getCollection("blog", ({ data }) => {
+    return data.isDraft !== true;
+  });
+  const relatedPosts = blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .filter((p) => p.data.tags.some((t) => tags.includes(t)))
+    .sort(
+      (a, b) =>
+        new Date(b.data.publishDate).valueOf() -
+        new Date(a.data.publishDate).valueOf()
+    )
+    .slice(0, 3);
+  return relatedPosts ?? [];
+}
+
 function formatDate(date: Date) {
   return date.toLocaleDateString("en-us", {
     day: "numeric",
@@ -73,6 +91,31 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
       <Prose>
         <Content />
       </Prose>
+
+      {
+        relatedPosts.length > 0 && (
+          <div class="my-12 mb-6" id="related-posts">
+            <h2 class="text-2xl font-bold mb-2">Related Posts</h2>
+            <ol class="list-decimal pl-4">
+              {relatedPosts.map((relatedPost) => (
+                <li class="mb-2">
+                  <a href={`/blog/${relatedPost.slug}`}>
+                    <h3 class="text-lg font-bold pl-2 inline">
+                      {relatedPost.data.title}
+                    </h3>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )
+      }
+
+      <a
+        href="/blog"
+        class="inline-block py-4 font-semibold bg-primary-700 px-6 rounded-md text-copy-300"
+        >View all posts</a
+      >
 
       <div class="my-12" id="comment-section">
         <script

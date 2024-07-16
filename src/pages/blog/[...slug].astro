@@ -73,6 +73,17 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
       <Prose>
         <Content />
       </Prose>
+
+      <div class="my-12" id="comment-section">
+        <script
+          is:inline
+          src="https://utteranc.es/client.js"
+          repo="nirjan-dev/site-comments"
+          issue-term="pathname"
+          theme="github-dark"
+          crossorigin="anonymous"
+          async></script>
+      </div>
     </div>
   </article>
 </PageLayout>

@@ -15,7 +15,7 @@ export async function GET() {
   });
 
   postSitemaps.push({
-    loc: "https://nirjan.dev/blog/",
+    loc: "https://nirjan.dev/blog",
     lastmod: new Date(
       blogPosts[0].data.updateDate ?? blogPosts[0].data.publishDate
     ).toISOString(),
@@ -23,7 +23,7 @@ export async function GET() {
 
   blogPosts.forEach((post) => {
     postSitemaps.push({
-      loc: `https://nirjan.dev/blog/${post.slug}/`,
+      loc: `https://nirjan.dev/blog/${post.slug}`,
       lastmod: new Date(
         post.data.updateDate ?? post.data.publishDate
       ).toISOString(),

@@ -8,6 +8,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://nirjan.dev",
+  trailingSlash: "never",
   integrations: [
     tailwind(),
     mdx(),

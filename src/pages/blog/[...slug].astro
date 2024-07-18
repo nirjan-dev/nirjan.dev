@@ -62,7 +62,7 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
         title: post.data.seoTitle ?? post.data.title,
         type: "website",
         image: "https://nirjan.dev/images/og-image.jpeg",
-        url: "https://nirjan.dev",
+        url: post.data.ogImage.src,
       },
     },
   }}

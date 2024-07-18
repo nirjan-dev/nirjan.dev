@@ -52,7 +52,21 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
 }
 ---
 
-<PageLayout>
+<PageLayout
+  seo={{
+    title: post.data.seoTitle ?? post.data.title,
+    description: post.data.seoDescription ?? post.data.excerpt,
+    canonical: "https://nirjan.dev/blog/" + post.slug,
+    openGraph: {
+      basic: {
+        title: post.data.seoTitle ?? post.data.title,
+        type: "website",
+        image: "https://nirjan.dev/images/og-image.jpeg",
+        url: "https://nirjan.dev",
+      },
+    },
+  }}
+>
   <article id="toc-article">
     <h1
       class="text-3xl mt-4 md:text-5xl md:mt-8 leading-snug font-extrabold max-w-prose mx-auto text-center mb-8"

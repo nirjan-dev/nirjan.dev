@@ -10,7 +10,22 @@ let featuredPosts = await getEntries(
 );
 ---
 
-<PageLayout>
+<PageLayout
+  seo={{
+    title: "Nirjan Khadka | Developer specializing in Web and Mobile App",
+    description:
+      "I make websites and applications that are fast, user friendly and accessible. I work with modern JavaScript, CSS, HTML, Vue, Svelte, React and Node.js",
+    canonical: "https://nirjan.dev",
+    openGraph: {
+      basic: {
+        title: "Nirjan Khadka's Personal site about coding and tech",
+        type: "website",
+        image: "https://nirjan.dev/images/blog-image.jpeg",
+        url: "https://nirjan.dev",
+      },
+    },
+  }}
+>
   <h1 class="lg:text-6xl text-3xl font-bold mb-6">Hi, I'm Nirjan.</h1>
 
   <p class="text-lg max-w-prose mb-12">

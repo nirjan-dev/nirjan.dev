@@ -14,7 +14,22 @@ blogPosts = blogPosts.sort((a, b) => {
 });
 ---
 
-<PageLayout>
+<PageLayout
+  seo={{
+    title: "Nirjan's Tech blog focusing on coding and making web apps",
+    description:
+      "I write about different web technologies like HTML, CSS, JavaScript, Svelte, Vue, Storybook, Node.js, SVG, WebGL, web animation and best coding practices.",
+    canonical: "https://nirjan.dev/blog",
+    openGraph: {
+      basic: {
+        title: "Nirjan Khadka's Blog",
+        type: "website",
+        image: "https://nirjan.dev/images/og-image.jpeg",
+        url: "https://nirjan.dev/blog",
+      },
+    },
+  }}
+>
   <h1 class="text-3xl md:text-4xl font-bold mb-6 text-center">
     Welcome to my blog
   </h1>

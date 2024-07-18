@@ -1,6 +1,13 @@
 ---
 import Header from "~/components/Header.astro";
 import "@fontsource-variable/nunito";
+import { SEO, type SEOProps } from "astro-seo";
+
+interface Props {
+  seo?: SEOProps;
+}
+
+const { seo } = Astro.props;
 ---
 
 <html lang="en">
@@ -16,7 +23,8 @@ import "@fontsource-variable/nunito";
       title="Nirjan's Blog"
       href={new URL("rss.xml", Astro.site)}
     />
-    <title>Nirjan.dev</title>
+
+    {seo && <SEO {...seo} />}
   </head>
   <body class="bg-background-800 text-copy-400">
     <Header />

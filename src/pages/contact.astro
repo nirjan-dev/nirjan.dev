@@ -3,7 +3,22 @@ import PageLayout from "~/layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<PageLayout>
+<PageLayout
+  seo={{
+    title: "Get in touch with Nirjan",
+    description:
+      "I make websites and applications that are fast, user friendly and accessible. I work with modern JavaScript, CSS, HTML, Vue, Svelte, React and Node.js",
+    canonical: "https://nirjan.dev/contact",
+    openGraph: {
+      basic: {
+        title: "Get in touch with Nirjan",
+        type: "website",
+        image: "https://nirjan.dev/images/og-image.jpeg",
+        url: "https://nirjan.dev/contact",
+      },
+    },
+  }}
+>
   <h1 class="text-center text-3xl py-6">Get in touch with me.</h1>
 
   <!-- Docs here: https://docs.web3forms.com/ -->

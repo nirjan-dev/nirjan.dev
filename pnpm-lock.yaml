@@ -35,6 +35,9 @@ importers:
       astro-seo:
         specifier: ^0.8.4
         version: 0.8.4(typescript@5.4.5)
+      astro-seo-schema:
+        specifier: ^4.0.2
+        version: 4.0.2(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))(schema-dts@1.1.2(typescript@5.4.5))
       headroom.js:
         specifier: ^0.12.0
         version: 0.12.0
@@ -44,6 +47,9 @@ importers:
       sanitize-html:
         specifier: ^2.13.0
         version: 2.13.0
+      schema-dts:
+        specifier: ^1.1.2
+        version: 1.1.2(typescript@5.4.5)
       sharp:
         specifier: ^0.33.4
         version: 0.33.4
@@ -885,6 +891,12 @@ packages:
 
   astro-icon@1.1.0:
     resolution: {integrity: sha512-Nksc09p7UuHeMcPNS9w1pKqRw3+wEmmh0A3FJW+FNXvqaeWI4RLvD1MCWErpY3Z5Cvad317rvLdik/Hg8GEk8Q==}
+
+  astro-seo-schema@4.0.2:
+    resolution: {integrity: sha512-OI9DWasORMpIzKsAmF4s6ghVX8F1INROla4JKBT8WDm/du25jxQsoQcJx99NY3gOQJ7Rv9a+cFPAfr17LsYXEg==}
+    peerDependencies:
+      astro: ^4.0.0
+      schema-dts: ^1.1.0
 
   astro-seo@0.8.4:
     resolution: {integrity: sha512-Ou1vzQSXAxa0K8rtNtXNvSpYqOGEgMhh0immMxJeXmbVZac3UKCNWAoXWyOQDFYsZvBugCRSg0N1phBqPMVgCw==}
@@ -2220,6 +2232,11 @@ packages:
 
   sax@1.4.1:
     resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
+
+  schema-dts@1.1.2:
+    resolution: {integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
 
   section-matter@1.0.0:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
@@ -3578,6 +3595,11 @@ snapshots:
       '@iconify/utils': 2.1.25
     transitivePeerDependencies:
       - supports-color
+
+  astro-seo-schema@4.0.2(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))(schema-dts@1.1.2(typescript@5.4.5)):
+    dependencies:
+      astro: 4.10.2(@types/node@20.14.2)(typescript@5.4.5)
+      schema-dts: 1.1.2(typescript@5.4.5)
 
   astro-seo@0.8.4(typescript@5.4.5):
     dependencies:
@@ -5402,6 +5424,10 @@ snapshots:
       postcss: 8.4.38
 
   sax@1.4.1: {}
+
+  schema-dts@1.1.2(typescript@5.4.5):
+    dependencies:
+      typescript: 5.4.5
 
   section-matter@1.0.0:
     dependencies:

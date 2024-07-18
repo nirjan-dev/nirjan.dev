@@ -29,6 +29,43 @@ blogPosts = blogPosts.sort((a, b) => {
       },
     },
   }}
+  schemaGraphItems={[
+    {
+      "@type": "Blog",
+      url: "https://nirjan.dev/blog",
+      name: "Nirjan's Tech Blog",
+      description:
+        "I write about different web technologies like HTML, CSS, JavaScript, Svelte, Vue, Storybook, Node.js, SVG, WebGL, web animation and best coding practices.",
+      inLanguage: "en-US",
+      dateModified: new Date(
+        blogPosts[0].data.updateDate ?? blogPosts[0].data.publishDate
+      ).toISOString(),
+      author: {
+        "@type": "Person",
+        name: "Nirjan Khadka",
+        url: "https://nirjan.dev/about",
+        knowsAbout: [
+          "web development",
+          "web design",
+          "web accessibility",
+          "web performance",
+          "web optimization",
+          "web development tools",
+          "web performance optimization",
+          "web accessibility",
+          "web development",
+        ],
+
+        image: "https://nirjan.dev/images/avatar.jpeg",
+        email: "webdev.nk@gmail.com",
+        sameAs: [
+          "https://github.com/nirjan-dev",
+          "https://twitter.com/nirjan_dev",
+          "https://linkedin.com/in/nirjankhadka",
+        ],
+      },
+    },
+  ]}
 >
   <h1 class="text-3xl md:text-4xl font-bold mb-6 text-center">
     Welcome to my blog

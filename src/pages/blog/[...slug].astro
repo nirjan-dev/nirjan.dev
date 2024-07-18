@@ -66,6 +66,50 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
       },
     },
   }}
+  schemaGraphItems={[
+    {
+      "@type": "BlogPosting",
+      url: "https://nirjan.dev/blog/" + post.slug,
+      name: post.data.title,
+      description: post.data.seoDescription ?? post.data.excerpt,
+      inLanguage: "en-US",
+      dateModified: new Date(
+        post.data.updateDate ?? post.data.publishDate
+      ).toISOString(),
+      datePublished: new Date(post.data.publishDate).toISOString(),
+      author: {
+        "@type": "Person",
+        name: "Nirjan Khadka",
+        url: "https://nirjan.dev/about",
+        knowsAbout: [
+          "web development",
+          "web design",
+          "web accessibility",
+          "web performance",
+          "web optimization",
+          "web development tools",
+          "web performance optimization",
+          "web accessibility",
+          "web development",
+        ],
+
+        image: "https://nirjan.dev/images/avatar.jpeg",
+        email: "webdev.nk@gmail.com",
+        sameAs: [
+          "https://github.com/nirjan-dev",
+          "https://twitter.com/nirjan_dev",
+          "https://linkedin.com/in/nirjankhadka",
+        ],
+      },
+      image: {
+        "@type": "ImageObject",
+        url: post.data.ogImage.src,
+        width: "1600",
+        height: "900",
+      },
+      headline: post.data.title,
+    },
+  ]}
 >
   <article id="toc-article">
     <h1

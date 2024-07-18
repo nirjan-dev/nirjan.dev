@@ -2,12 +2,15 @@
 import Header from "~/components/Header.astro";
 import "@fontsource-variable/nunito";
 import { SEO, type SEOProps } from "astro-seo";
+import type { Thing } from "schema-dts";
+import { Schema } from "astro-seo-schema";
 
 interface Props {
   seo?: SEOProps;
+  schemaGraphItems?: Thing[];
 }
 
-const { seo } = Astro.props;
+const { seo, schemaGraphItems } = Astro.props;
 ---
 
 <html lang="en">
@@ -25,6 +28,23 @@ const { seo } = Astro.props;
     />
 
     {seo && <SEO {...seo} />}
+
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://nirjan.dev",
+            url: "https://nirjan.dev",
+            name: "Nirjan's Personal site",
+            description:
+              "Personal site and blog about coding and tech by Nirjan",
+          },
+          ...(schemaGraphItems?.length ? schemaGraphItems : []),
+        ],
+      }}
+    />
   </head>
   <body class="bg-background-800 text-copy-400">
     <Header />
@@ -33,16 +53,15 @@ const { seo } = Astro.props;
         <slot />
       </main>
     </div>
+    <style is:global>
+      a {
+        @apply text-secondary-400 transition-colors;
+
+        &:hover,
+        &:focus {
+          @apply text-secondary-600;
+        }
+      }
+    </style>
   </body>
 </html>
-
-<style is:global>
-  a {
-    @apply text-secondary-400 transition-colors;
-
-    &:hover,
-    &:focus {
-      @apply text-secondary-600;
-    }
-  }
-</style>

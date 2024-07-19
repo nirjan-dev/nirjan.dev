@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Prose from "~/components/Prose.astro";
 import TableOfContents from "~/components/TableOfContents.astro";
 import PageLayout from "~/layouts/PageLayout.astro";
+import { personSchema } from "~/utils/personSchema";
 
 export const getStaticPaths = (async () => {
   const blogPosts = await getCollection("blog", ({ data }) => {
@@ -77,30 +78,7 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
         post.data.updateDate ?? post.data.publishDate
       ).toISOString(),
       datePublished: new Date(post.data.publishDate).toISOString(),
-      author: {
-        "@type": "Person",
-        name: "Nirjan Khadka",
-        url: "https://nirjan.dev/about",
-        knowsAbout: [
-          "web development",
-          "web design",
-          "web accessibility",
-          "web performance",
-          "web optimization",
-          "web development tools",
-          "web performance optimization",
-          "web accessibility",
-          "web development",
-        ],
-
-        image: "https://nirjan.dev/images/avatar.jpeg",
-        email: "webdev.nk@gmail.com",
-        sameAs: [
-          "https://github.com/nirjan-dev",
-          "https://twitter.com/nirjan_dev",
-          "https://linkedin.com/in/nirjankhadka",
-        ],
-      },
+      author: personSchema,
       image: {
         "@type": "ImageObject",
         url: post.data.ogImage.src,

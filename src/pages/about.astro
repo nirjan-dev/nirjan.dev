@@ -1,22 +1,157 @@
 ---
+import Prose from "~/components/Prose.astro";
 import PageLayout from "~/layouts/PageLayout.astro";
+import { personSchema } from "~/utils/personSchema";
 ---
 
 <PageLayout
   seo={{
-    title: "Nirjan Khadka | Developer specializing in Web and Mobile App",
+    title: "Bio for Nirjan Khadka | Self-taught Full-Stack Product Developer",
     description:
-      "I make websites and applications that are fast, user friendly and accessible. I work with modern JavaScript, CSS, HTML, Vue, Svelte, React and Node.js",
+      "I'm based in Kathmandu, Nepal and I love solving problems and learning new things. You can find me usually spending my day learning something new about coding or trying to use code to solve my problems. Besides coding, I'm also a huge cinephile and I love reading books or listening to music (mostly hiphop). I'm deeply curious about history, mythology and storytelling.",
     canonical: "https://nirjan.dev/about",
     openGraph: {
       basic: {
-        title: "Nirjan Khadka's Personal site about coding and tech",
+        title:
+          "Bio for Nirjan Khadka - Self-taught Full-Stack Product Developer",
         type: "website",
-        image: "https://nirjan.dev/images/og-image.jpeg",
-        url: "https://nirjan.dev",
+        image: "https://nirjan.dev/images/site-og.png",
+        url: "https://nirjan.dev/about",
       },
     },
   }}
+  schemaGraphItems={[personSchema]}
 >
-  <h1>Welcome to Nirjan's about page</h1>
+  <h1 class="text-center text-2xl lg:text-4xl font-extrabold">
+    I'm Nirjan, a self-taught Full-Stack Product Developer.
+  </h1>
+
+  <div class="max-w-prose mx-auto py-6 px-3 lg:text-lg">
+    <Prose>
+      <img
+        class="w-32 h-32 mb-1 mr-6 rounded-full float-left"
+        src="/images/profile.png"
+        alt="Nirjan Khadka's profile picture"
+      />
+      <p>
+        I'm based in Kathmandu, Nepal and I love solving problems and learning
+        new things. You can find me usually spending my day learning something
+        new about coding or trying to use code to solve my problems. Besides
+        coding, I'm also a huge cinephile and I love reading books or listening
+        to music (mostly hiphop). I'm deeply curious about history, mythology
+        and storytelling. I enjoy playing football/futsal whenever I can and I'm
+        a loyal Manchester United Fan.
+      </p>
+
+      <h2>What I aim for in any software I build</h2>
+      <ul>
+        <li>
+          <h3>Good User experience</h3>
+          <ul>
+            <li>Intuitive interface</li>
+            <li>Accessible</li>
+            <li>Bloat free</li>
+            <li>Cohesive brand</li>
+            <li>Simple and Clear</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Good performance</h3>
+          <ul>
+            <li>Fast loading times</li>
+            <li>Fast time to first interaction</li>
+            <li>Fast feedback cycle</li>
+            <li>Fast for majority of users</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Secure</h3>
+          <ul>
+            <li>Free from common vulnerabilities</li>
+            <li>Follow best practices</li>
+            <li>User comes before developer experience</li>
+            <li>Proper backups and plans for outages</li>
+            <li>Limited downtime - try to aim for 99.99% SLAs</li>
+            <li>Prevent issues from depenencies</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>My sofware development values</h2>
+      <ul>
+        <li>Main priorities: UX, Performance and Security</li>
+        <li>Outcome over tools and techniques</li>
+        <li>Focuses on patterns over technology</li>
+        <li>Long-term proven technologies instead of short-term trends</li>
+
+        <li>
+          Avoid shitting on other tech and people and try to spread positivity
+          and excitement
+        </li>
+        <li>Give people the benefit of doubt</li>
+        <li>Learn in public</li>
+        <li>Build in public</li>
+        <li>Proponent of Self hosting and owning your data</li>
+        <li>Linux enthusiast</li>
+        <li>Ship quick and then iterate</li>
+      </ul>
+      <h2>Core patterns I try to follow</h2>
+      <ul>
+        <li>
+          Good UX<ul>
+            <li>Good understanding of UI/UX</li>
+            <li>Accessibility</li>
+            <li>Understanding Product management, branding and marketing</li>
+            <li>Testing for end-user happiness</li>
+          </ul>
+        </li>
+        <li>
+          Good Performance<ul>
+            <li>Benchmarking and profiling</li>
+            <li>Good understanding of devtools</li>
+            <li>Good understanding of fundamentals of the platform</li>
+            <li>Performance oriented CI/CD practices</li>
+            <li>RUM metrics collection</li>
+            <li>Database query optimizations</li>
+            <li>Observability and tracing</li>
+            <li>Avoid Hasty Abstractions</li>
+          </ul>
+        </li>
+        <li>
+          Security<ul>
+            <li>Implement the best security practices for the platform</li>
+            <li>Good backup solutions</li>
+            <li>Understand laws and regulations for user privacy</li>
+            <li>Good data storage practices</li>
+            <li>Proper monitoring and alerting</li>
+            <li>Proper dependency auditing</li>
+            <li>
+              Own the data as much as possible instead of giving it to third
+              parties
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Fundamental technologies I'm interested in</h2>
+      <ul>
+        <li>Linux</li>
+        <li>Docker</li>
+        <li>GIT</li>
+        <li>SQL</li>
+        <li>Assembly*</li>
+        <li>Web Protocols: HTTP, HTTPs, TLS, UDP, Web sockets</li>
+        <li>Accessibility</li>
+        <li>UI/UX design</li>
+        <li>Relational database modeling</li>
+        <li>Observability</li>
+        <li>Debuggers</li>
+        <li>Profillers</li>
+        <li>Web Platform</li>
+        <li>Marketing and Branding</li>
+        <li>Observability and Monitoring</li>
+        <li>Infrastructure as Code</li>
+        <li>Automation</li>
+        <li>Testing</li>
+      </ul>
+    </Prose>
+  </div>
 </PageLayout>

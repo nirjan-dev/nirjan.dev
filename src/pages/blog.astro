@@ -1,6 +1,7 @@
 ---
 import PageLayout from "~/layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
+import { personSchema } from "~/utils/personSchema";
 
 let blogPosts = await getCollection("blog", ({ data }) => {
   return data.isDraft !== true;
@@ -16,9 +17,9 @@ blogPosts = blogPosts.sort((a, b) => {
 
 <PageLayout
   seo={{
-    title: "Nirjan's Tech blog focusing on coding and making web apps",
+    title: "Nirjan's blog focusing on coding and tech",
     description:
-      "I write about different web technologies like HTML, CSS, JavaScript, Svelte, Vue, Storybook, Node.js, SVG, WebGL, web animation and best coding practices.",
+      "I make websites and apps that are fast, user friendly, accessible and secure. I work with Typescript, HTML & CSS, Vue, Svelte, Node.js and Golang.",
     canonical: "https://nirjan.dev/blog",
     openGraph: {
       basic: {
@@ -35,35 +36,12 @@ blogPosts = blogPosts.sort((a, b) => {
       url: "https://nirjan.dev/blog",
       name: "Nirjan's Tech Blog",
       description:
-        "I write about different web technologies like HTML, CSS, JavaScript, Svelte, Vue, Storybook, Node.js, SVG, WebGL, web animation and best coding practices.",
+        "I make websites and apps that are fast, user friendly, accessible and secure. I work with Typescript, HTML & CSS, Vue, Svelte, Node.js and Golang.",
       inLanguage: "en-US",
       dateModified: new Date(
         blogPosts[0].data.updateDate ?? blogPosts[0].data.publishDate
       ).toISOString(),
-      author: {
-        "@type": "Person",
-        name: "Nirjan Khadka",
-        url: "https://nirjan.dev/about",
-        knowsAbout: [
-          "web development",
-          "web design",
-          "web accessibility",
-          "web performance",
-          "web optimization",
-          "web development tools",
-          "web performance optimization",
-          "web accessibility",
-          "web development",
-        ],
-
-        image: "https://nirjan.dev/images/avatar.jpeg",
-        email: "webdev.nk@gmail.com",
-        sameAs: [
-          "https://github.com/nirjan-dev",
-          "https://twitter.com/nirjan_dev",
-          "https://linkedin.com/in/nirjankhadka",
-        ],
-      },
+      author: personSchema,
     },
   ]}
 >

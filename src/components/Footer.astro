@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+
+const socialLinks = [
+  {
+    name: "Github",
+    url: "https://github.com/nirjan",
+    icon: "mdi:github",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/nirjan",
+    icon: "mdi:twitter",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/nirjan",
+    icon: "mdi:linkedin",
+  },
+];
+---
+
+<footer class="bg-primary-950 text-copy-300 px-4 p-2">
+  <div class="container mx-auto flex flex-col items-center">
+    <ul class="flex">
+      {
+        socialLinks.map((link) => (
+          <li>
+            <a
+              class="px-2 text-2xl leading-none mx-6"
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="sr-only">{link.name}</span>
+              <Icon name={link.icon} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p>© 2018-present Nirjan Khadka. All Rights Reserved.</p>
+  </div>
+</footer>

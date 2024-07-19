@@ -12,52 +12,64 @@ let featuredPosts = await getEntries(
 
 <PageLayout
   seo={{
-    title: "Nirjan Khadka | Developer specializing in Web and Mobile App",
+    title: "Nirjan Khadka | Solving problems with code",
     description:
-      "I make websites and applications that are fast, user friendly and accessible. I work with modern JavaScript, CSS, HTML, Vue, Svelte, React and Node.js",
+      "I make websites and apps that are fast, user friendly, accessible and secure. I work with Typescript, HTML & CSS, Vue, Svelte, Node.js and Golang",
     canonical: "https://nirjan.dev",
     openGraph: {
       basic: {
-        title: "Nirjan Khadka's Personal site about coding and tech",
+        title: "Nirjan Khadka's Blog about coding and tech",
         type: "website",
-        image: "https://nirjan.dev/images/blog-image.jpeg",
+        image: "https://nirjan.dev/images/site-og.png",
         url: "https://nirjan.dev",
       },
     },
   }}
 >
-  <h1 class="lg:text-6xl text-3xl font-bold mb-6">Hi, I'm Nirjan.</h1>
+  <h1 class="lg:text-6xl text-4xl font-bold mb-6">Hi, I'm Nirjan&nbsp;👋🏽</h1>
 
-  <p class="text-lg max-w-prose mb-12">
-    I am fullstack product developer who makes web & mobile apps that are fast,
-    user friendly and accessible. I am currently building <a
-      class="font-semibold"
-      href="https://remotedevjobs.net/"
+  <p class="text-xl lg:text-2xl max-w-prose mb-6 lg:mb-12">
+    I build software that's <strong class="text-primary-300">fast</strong>, <strong
+      class="text-primary-300">user-friendly</strong
+    > and <strong class="text-primary-300">secure</strong>. My focus is on
+    solving real problems with solid programming fundamentals, not chasing
+    trends.
+    <br /><br />
+
+    With experience in full-stack web apps, SEO-optimized websites,
+    user-friendly mobile apps, and intuitive CLI tools, I'm ready to <span
+      class="underline decoration-secondary-400 underline-offset-8"
     >
-      the best place to find remote dev jobs
-    </a>.
+      solve your user's problems
+    </span> in a way that's right for you.
   </p>
 
-  <h2 class="text-2xl font-bold mb-3">Featured Posts</h2>
-  <ul class="grid grid-cols-1 md:grid-cols-3 gap-8 py-4 mb-4">
-    {
-      featuredPosts.map((post) => (
-        <li>
-          <div class="py-6 px-8 bg-primary-950 grid gap-2 rounded-lg h-full">
-            <h3 class="text-xl font-bold">
-              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-            </h3>
-            <p>{post.data.excerpt}</p>
-            <p>{new Date(post.data.publishDate).toLocaleDateString()}</p>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
-
   <a
-    href="/blog"
-    class="inline-block py-4 font-semibold bg-primary-700 px-6 rounded-md text-copy-300"
-    >View all posts</a
+    class="inline-block py-2 lg:py-4 font-semibold bg-primary-700 px-3 lg:px-6 rounded-md text-copy-300 text-lg lg:text-xl focus:text-copy-50 focus:bg-primary-600 hover:text-copy-50 hover:bg-primary-600 transition-colors"
+    href="/contact">Let's work together</a
   >
+
+  <section class="py-12 lg:py-20 pb-6 lg:pb-12">
+    <h2 class="text-2xl font-bold mb-3">Featured Posts</h2>
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-8 py-4 mb-4">
+      {
+        featuredPosts.map((post) => (
+          <li>
+            <div class="py-6 px-8 bg-primary-950 grid gap-2 rounded-lg h-full">
+              <h3 class="text-xl font-bold">
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h3>
+              <p>{post.data.excerpt}</p>
+              <p>{new Date(post.data.publishDate).toLocaleDateString()}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <a
+      href="/blog"
+      class="inline-block py-4 font-semibold border-4 focus:text-copy-50 focus:bg-primary-600 hover:text-copy-50 hover:bg-primary-600 transition-colors border-primary-700 px-6 rounded-md text-copy-300"
+      >View all posts</a
+    >
+  </section>
 </PageLayout>

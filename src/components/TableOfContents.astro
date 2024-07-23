@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { headings } = Astro.props;
 
 const toc = buildToc(headings);
@@ -31,37 +33,86 @@ function buildToc(headings: Heading[]) {
 }
 ---
 
-<h2 class="text-xl md:text-2xl font-bold mb-1 mt-4">Table of Contents</h2>
-<nav id="toc" class="mb-6">
-  <ul>
-    {
-      toc.map((heading) => (
-        <li>
-          <a
-            class="md:text-lg py-1 inline-block text-primary-200 font-medium"
-            href={`#${heading.slug}`}
-          >
-            {heading.text}
-          </a>
-          {heading.subheadings.length > 0 && (
-            <ul class="ml-4">
-              {heading.subheadings.map((subheading) => (
-                <li>
-                  <a
-                    class="text-sm md:text-base py-1 inline-block text-primary-200 font-medium"
-                    href={`#${subheading.slug}`}
-                  >
-                    {subheading.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))
-    }
-  </ul>
-</nav>
+<div class="hidden lg:block">
+  <h2 class="text-xl md:text-2xl font-bold mb-1 mt-4">Table of Contents</h2>
+  <nav id="toc" class="mb-6">
+    <ul>
+      {
+        toc.map((heading) => (
+          <li>
+            <a
+              class="md:text-lg py-1 inline-block text-primary-200 font-medium"
+              href={`#${heading.slug}`}
+            >
+              {heading.text}
+            </a>
+            {heading.subheadings.length > 0 && (
+              <ul class="ml-4">
+                {heading.subheadings.map((subheading) => (
+                  <li>
+                    <a
+                      class="text-sm md:text-base py-1 inline-block text-primary-200 font-medium"
+                      href={`#${subheading.slug}`}
+                    >
+                      {subheading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<div class="lg:hidden toc-headroom">
+  <div popover id="toc-popover">
+    <h2 class="text-xl font-bold text-copy-50 text-center mb-2">
+      Table of Contents
+    </h2>
+    <nav id="toc" class="mb-6">
+      <ul>
+        {
+          toc.map((heading) => (
+            <li>
+              <a
+                class="md:text-lg py-1 inline-block text-primary-200 font-medium"
+                href={`#${heading.slug}`}
+              >
+                {heading.text}
+              </a>
+              {heading.subheadings.length > 0 && (
+                <ul class="ml-4">
+                  {heading.subheadings.map((subheading) => (
+                    <li>
+                      <a
+                        class="text-sm md:text-base py-1 inline-block text-primary-200 font-medium"
+                        href={`#${subheading.slug}`}
+                      >
+                        {subheading.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <button
+    popovertarget="toc-popover"
+    class="inline-block float-right mr-10 mb-32 0 bg-primary-800 rounded-full p-3 shadow-lg shadow-primary-800/50"
+  >
+    <span class="sr-only">Menu</span>
+    <Icon name="mdi:table-of-contents" class="open-menu-icon w-6 h-6" />
+    <Icon name="mdi:close" class="close-menu-icon w-6 h-6" />
+  </button>
+</div>
 
 <style>
   #toc a {
@@ -79,10 +130,72 @@ function buildToc(headings: Heading[]) {
       @apply scale-y-100;
     }
   }
+
+  /* Headroom */
+  .toc-headroom {
+    @apply will-change-transform transition-transform fixed bottom-0 left-0 w-full;
+  }
+  .headroom--pinned {
+    @apply translate-y-0;
+  }
+  .headroom--unpinned {
+    @apply translate-y-full md:-translate-y-full;
+  }
+
+  /* TOC popover */
+
+  [popover] ~ [popovertarget="toc-popover"] {
+    .open-menu-icon {
+      @apply inline-block;
+    }
+
+    .close-menu-icon {
+      @apply hidden;
+    }
+  }
+
+  [popover]:popover-open ~ [popovertarget="toc-popover"] {
+    .open-menu-icon {
+      @apply hidden;
+    }
+
+    .close-menu-icon {
+      @apply inline-block;
+    }
+  }
+
+  [popover] {
+    @apply min-w-[50%] to-background-500 bg-background-900 rounded-3xl shadow-xl shadow-background-600/20 inset-[unset] max-h-[60svh]  bottom-52 flex-col px-2 pt-6 inset-x-[revert];
+  }
+
+  /* animating the popover */
+
+  [popover]:popover-open {
+    animation: flip-in-hor-bottom 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+  }
 </style>
 
 <script>
+  import Headroom from "headroom.js";
+
   addIntersectionObserverForTOC();
+
+  const headroomElement = document.querySelector(".toc-headroom");
+  const tocLinks = document.querySelectorAll("#toc a");
+
+  tocLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      (
+        document.querySelector("#toc-popover:popover-open") as any
+      )?.hidePopover();
+    });
+  });
+
+  if (headroomElement) {
+    const headroom = new Headroom(headroomElement);
+    headroom.init();
+  }
 
   function addIntersectionObserverForTOC() {
     const observer = new IntersectionObserver((headings) => {

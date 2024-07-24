@@ -110,8 +110,8 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
         {
           post.data.tags.map((tag) => (
             <a
-              href="#"
-              class="capitalize bg-primary-300 text-copy-950 px-1 md:px-3 md:py-1 rounded mx-3"
+              href={`/blog/tags/${tag}`}
+              class="uppercase tracking-wide  bg-primary-300 text-copy-950 px-1 md:px-3 md:py-1 rounded mx-3"
             >
               {tag}
             </a>
@@ -154,6 +154,16 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
         class="inline-block py-4 font-semibold bg-primary-700 px-6 rounded-md text-copy-300"
         >View all posts</a
       >
+
+      <h2 class="text-xl font-bold mt-6 mb-2">
+        Get the latest posts & updates directly to your inbox
+      </h2>
+      <p class="mb-2">No span, ever. Unsubscribe at any time</p>
+      <script
+        is:inline
+        async
+        data-uid="0ae9781f67"
+        src="https://adept-leader-6299.ck.page/0ae9781f67/index.js"></script>
 
       <div class="my-12" id="comment-section">
         <script

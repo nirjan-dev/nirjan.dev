@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
+import NewsletterForm from "~/components/NewsletterForm.astro";
 import Prose from "~/components/Prose.astro";
 import TableOfContents from "~/components/TableOfContents.astro";
 import PageLayout from "~/layouts/PageLayout.astro";
@@ -159,11 +160,7 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
         Get the latest posts & updates directly to your inbox
       </h2>
       <p class="mb-2">No span, ever. Unsubscribe at any time</p>
-      <script
-        is:inline
-        async
-        data-uid="0ae9781f67"
-        src="https://adept-leader-6299.ck.page/0ae9781f67/index.js"></script>
+      <NewsletterForm />
 
       <div class="my-12" id="comment-section">
         <script

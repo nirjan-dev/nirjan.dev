@@ -9,9 +9,7 @@ export default defineConfig({
     device: "desktop",
     throttle: true,
   },
-  puppeteerClusterOptions: {
-    maxConcurrency: 1,
-  },
+
   ci: {
     budget: {
       accessibility: 95,

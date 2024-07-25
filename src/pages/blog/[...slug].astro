@@ -92,7 +92,7 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
 >
   <article id="toc-article">
     <h1
-      class="text-3xl mt-4 md:text-5xl md:mt-8 leading-snug font-extrabold max-w-prose mx-auto text-center mb-8"
+      class="text-3xl md:text-5xl md:mt-8 leading-snug font-extrabold max-w-prose mx-auto text-center mb-8"
     >
       {post.data.title}
     </h1>
@@ -152,15 +152,22 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
 
       <a
         href="/blog"
-        class="inline-block py-4 font-semibold bg-primary-700 px-6 rounded-md text-copy-300"
+        class="inline-block py-2 font-semibold border-4 focus:text-copy-50 focus:bg-primary-600 hover:text-copy-50 hover:bg-primary-600 transition-colors border-primary-700 px-6 rounded-md text-copy-300"
         >View all posts</a
       >
 
-      <h2 class="text-xl font-bold mt-6 mb-2">
+      <h2 class="text-xl font-bold mt-10 mb-2">
         Get the latest posts & updates directly to your inbox
       </h2>
-      <p class="mb-2">No span, ever. Unsubscribe at any time</p>
-      <NewsletterForm />
+      <p class="mb-3">No span, ever. Unsubscribe at any time</p>
+
+      <a
+        target="_blank"
+        rel="noopener"
+        class="inline-block py-2 font-semibold bg-primary-700 px-3 lg:px-6 rounded-md text-copy-300 focus:text-copy-50 focus:bg-primary-600 hover:text-copy-50 hover:bg-primary-600 transition-colors"
+        href="https://adept-leader-6299.ck.page/0ae9781f67"
+        >Subscibe to my newsletter</a
+      >
 
       <div class="my-12" id="comment-section">
         <script

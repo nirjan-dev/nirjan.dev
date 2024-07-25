@@ -2,7 +2,6 @@
 import { defineConfig } from "unlighthouse";
 
 export default defineConfig({
-  site: "localhost:4321",
   cache: false,
   scanner: {
     samples: 3,

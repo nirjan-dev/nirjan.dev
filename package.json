@@ -10,7 +10,7 @@
     "astro": "astro",
     "test:e2e": "playwright test",
     "test:e2e-ui": "playwright test --ui",
-    "test:perf": "unlighthouse"
+    "test:perf": "unlighthouse --site https://nirjan-dev-astro.vercel.app"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",

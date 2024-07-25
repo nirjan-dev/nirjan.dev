@@ -114,6 +114,53 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+  performance_test:
+    runs-on: ubuntu-latest
+    needs: build_site
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download dist folder Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.1.0
+          cache: 'pnpm'
+    
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV    
+
+      - name: Restore pnpm cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+    
+      - name: Install dependencies
+        run: pnpm install
+    
+      - name: Install unlighthouse
+        run: pnpm install -g @unlighthouse/cli puppeteer
+
+      - name: run preview server
+        run: pnpm run preview
+      
+      - name: Run unlighthouse
+        run: unlighthouse-ci --build-static
   
   deploy_preview:
     needs: [build_site, test_e2e]

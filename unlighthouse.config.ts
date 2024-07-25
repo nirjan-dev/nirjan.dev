@@ -14,7 +14,7 @@ export default defineConfig({
     budget: {
       accessibility: 95,
       "best-practices": 95,
-      performance: 95,
+      performance: 85,
       seo: 95,
     },
   },

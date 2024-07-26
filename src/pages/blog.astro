@@ -70,18 +70,21 @@ const uniqueTags = [...new Set(allTags)];
     </ul>
   </p>
 
-  <ul class="grid gap-4 max-w-prose mx-auto">
-    {
-      blogPosts.map((post) => (
-        <li>
-          <div class="p-2 grid gap-2 rounded-lg h-full">
-            <h3 class="text-xl text-blue-600 font-bold">
-              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-            </h3>
-            <p>{new Date(post.data.publishDate).toLocaleDateString()}</p>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+  <section class="max-w-prose mx-auto py-6">
+    <h2 class="text-2xl font-bold mb-2">All Posts</h2>
+    <ul class="grid gap-4">
+      {
+        blogPosts.map((post) => (
+          <li>
+            <div class="p-2 grid gap-2 rounded-lg h-full">
+              <h3 class="text-xl text-blue-600 font-bold">
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h3>
+              <p>{new Date(post.data.publishDate).toLocaleDateString()}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </PageLayout>

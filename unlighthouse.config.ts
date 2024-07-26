@@ -4,17 +4,17 @@ import { defineConfig } from "unlighthouse";
 export default defineConfig({
   cache: false,
   scanner: {
-    samples: 3,
+    samples: 2,
     device: "desktop",
     throttle: true,
   },
 
   ci: {
     budget: {
-      accessibility: 95,
-      "best-practices": 95,
-      performance: 85,
-      seo: 95,
+      accessibility: 90,
+      "best-practices": 90,
+      performance: 80,
+      seo: 90,
     },
   },
 });

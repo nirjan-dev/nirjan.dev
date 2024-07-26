@@ -51,6 +51,10 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
     ? `${formatDate(updateDate)}`
     : `${formatDate(publishDate)}`;
 }
+
+function getISODate(date: Date) {
+  return new Date(date).toISOString();
+}
 ---
 
 <PageLayout
@@ -97,11 +101,12 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
     </h1>
     <div class="mb-12">
       <p class="text-lg text-center my-3">
-        Last updated on: <span
-          class="underline decoration-secondary-400 underline-offset-4"
+        Last updated on: <time
+          datetime={getISODate(post.data.updateDate ?? post.data.publishDate)}
+          class="text-primary-300 font-bold"
           >{
             showLastUpdateDate(post.data.publishDate, post.data.updateDate)
-          }</span
+          }</time
         >
       </p>
       <div
@@ -181,3 +186,40 @@ function showLastUpdateDate(publishDate: Date, updateDate?: Date) {
     </div>
   </article>
 </PageLayout>
+
+<style is:global>
+  /* code blocks */
+  code {
+    counter-reset: line;
+  }
+
+  code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-right: 2rem;
+    text-align: right;
+    color: gray;
+  }
+
+  code[data-line-numbers-max-digits="2"] > [data-line]::before {
+    width: 2rem;
+  }
+
+  code[data-line-numbers-max-digits="3"] > [data-line]::before {
+    width: 3rem;
+  }
+</style>
+
+<!-- TODO find a way to make the comment unit more accessible -->
+<!-- <style is:global>
+  /* utterances comment unit overrides */
+  .timeline-header > a:nth-child(1),
+  .timeline-header,
+  .text-link {
+    @apply text-copy-50 !important;
+  }
+</style> -->

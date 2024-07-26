@@ -35,7 +35,7 @@ function buildToc(headings: Heading[]) {
 
 <div class="hidden lg:block">
   <h2 class="text-xl md:text-2xl font-bold mb-1 mt-4">Table of Contents</h2>
-  <nav id="toc" class="mb-6">
+  <nav id="toc" aria-label="Table of Contents List" class="mb-6">
     <ul>
       {
         toc.map((heading) => (
@@ -72,7 +72,11 @@ function buildToc(headings: Heading[]) {
     <h2 class="text-xl font-bold text-copy-50 text-center mb-2">
       Table of Contents
     </h2>
-    <nav id="toc" class="mb-6">
+    <nav
+      id="toc-mobile"
+      aria-label="Table of Contents List for mobile only"
+      class="mb-6"
+    >
       <ul>
         {
           toc.map((heading) => (

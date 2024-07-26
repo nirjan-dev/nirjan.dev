@@ -16,10 +16,6 @@
           "value": "1; mode=block"
         },
         {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self' utteranc.es *.github.com *.telemetrydeck.com"
-        },
-        {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
         },

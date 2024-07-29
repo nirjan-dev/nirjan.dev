@@ -29,7 +29,7 @@ const { seo, schemaGraphItems } = Astro.props;
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="connect-src 'self' *.telemetrydeck.com ; img-src 'self' data: ;  style-src-attr 'unsafe-inline'; style-src-elem 'unsafe-inline'; script-src 'unsafe-inline' 'self' https://utteranc.es *.telemetrydeck.com ; frame-src https://utteranc.es ; default-src 'self';"
+      content="connect-src 'self' *.telemetrydeck.com ; img-src 'self' data: ;  style-src-attr 'unsafe-inline' 'self'; style-src-elem 'unsafe-inline' 'self'; script-src 'unsafe-inline' 'self' https://utteranc.es *.telemetrydeck.com ; frame-src https://utteranc.es ; default-src 'self';"
     />
 
     {seo && <SEO {...seo} />}

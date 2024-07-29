@@ -23,6 +23,9 @@ const prettyCodeOptions: Options = {
 export default defineConfig({
   site: "https://nirjan.dev",
   trailingSlash: "never",
+  devToolbar: {
+    enabled: false,
+  },
   integrations: [
     tailwind(),
     mdx(),

@@ -27,6 +27,10 @@ const { seo, schemaGraphItems } = Astro.props;
       title="Nirjan's Blog"
       href={new URL("rss.xml", Astro.site)}
     />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="connect-src 'self' *.telemetrydeck.com ; img-src 'self' data: ;  style-src-attr 'unsafe-inline'; style-src-elem 'unsafe-inline'; script-src 'unsafe-inline' 'self' https://utteranc.es *.telemetrydeck.com ; frame-src https://utteranc.es ; default-src 'self';"
+    />
 
     {seo && <SEO {...seo} />}
 

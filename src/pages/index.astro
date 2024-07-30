@@ -55,7 +55,7 @@ let featuredPosts = await getEntries(
       {
         featuredPosts.map((post) => (
           <li>
-            <div class="py-6 px-8 bg-primary-950 grid gap-2 rounded-lg h-full">
+            <div class="py-6 px-8 bg-background-950 shadow-lg shadow-background-950/20 grid gap-2 rounded-lg h-full">
               <h3 class="text-xl font-bold">
                 <a href={`/blog/${post.slug}`}>{post.data.title}</a>
               </h3>

@@ -66,8 +66,8 @@ function getISODate(date: Date) {
       basic: {
         title: post.data.seoTitle ?? post.data.title,
         type: "website",
-        image: "https://nirjan.dev/images/og-image.jpeg",
-        url: post.data.ogImage.src,
+        image: post.data.ogImage.src,
+        url: "https://nirjan.dev/blog/" + post.slug,
       },
     },
   }}
@@ -116,7 +116,7 @@ function getISODate(date: Date) {
           post.data.tags.map((tag) => (
             <a
               href={`/blog/tags/${tag}`}
-              class="uppercase tracking-wide  bg-primary-300 text-copy-950 px-1 md:px-3 md:py-1 rounded mx-3"
+              class="bg-primary-300 text-copy-950 px-1 md:px-3 md:py-1 rounded mx-1 md:mx-2"
             >
               {tag}
             </a>

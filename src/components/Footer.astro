@@ -25,14 +25,14 @@ const socialLinks = [
 ];
 ---
 
-<footer class="bg-primary-950 text-copy-300 px-4 p-2">
+<footer class="bg-primary-950 mt-8 text-copy-300 py-4 md:py-6 px-2">
   <div class="container mx-auto text-center">
     <ul class="flex items-center justify-center">
       {
         socialLinks.map((link) => (
           <li>
             <a
-              class="px-2 leading-none text-xl  md:text-2xl mx-6"
+              class="px-3 py-2 leading-none text-xl  md:text-2xl inline-block"
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"

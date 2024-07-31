@@ -5,6 +5,7 @@ import { SEO, type SEOProps } from "astro-seo";
 import type { Thing } from "schema-dts";
 import { Schema } from "astro-seo-schema";
 import Footer from "~/components/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   seo?: SEOProps;
@@ -50,11 +51,13 @@ const { seo, schemaGraphItems } = Astro.props;
         ],
       }}
     />
+
+    <ViewTransitions />
   </head>
   <body class="bg-background-800 text-copy-400 flex flex-col min-h-svh">
     <Header />
     <div class="container mx-auto px-4 py-2 md:mt-28 flex-grow">
-      <main id="main-content">
+      <main transition:animate="slide" id="main-content">
         <slot />
       </main>
     </div>

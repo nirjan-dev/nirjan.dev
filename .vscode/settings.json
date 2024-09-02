@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["Vercel"]
+  "cSpell.words": ["Vercel"],
+  "editor.fontSize": 14,
+  "editor.rulers": [],
+  "editor.renderLineHighlight": "line",
+  "workbench.colorCustomizations": {
+    "terminal.foreground": "#00fd61",
+    "terminal.ansiGreen": "#ff0000"
+  }
 }

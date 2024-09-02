@@ -1,0 +1,171 @@
+---
+title: How to create HTML dropdown menus without using any JavaScript
+excerpt: Modern HTML and CSS is pretty great and you can make a lot of useful interfaces without using any JavaScript now, including a great dropdown menu. This guide covers how you can build your own dropdown menu without using a single line of JavaScript.
+publishDate: '2024-09-12'
+tags: ['ux', 'css', 'html']
+ogImage: './og-image.png'
+isDraft: true
+---
+
+## Introducing the Popover API ✨
+
+The popover API is one of my favorite new HTML features. It makes building interfaces like dropdowns dead-simple. You use some HTML attributes to define what triggers a popover and the popover area (which will be hidden by default) and then let good old HTML handle the rest. No need to use any JavaScript if you don't want to or install a third-party library. You can read more about the [popover API on the MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) too.
+
+> The Popover API provides developers with a standard, consistent, flexible mechanism for displaying popover content on top of other page content. Popover content can be controlled either declaratively using HTML attributes, or via JavaScript. - MDN Web Docs
+
+## Using the Popover API to build a dropdown menu
+
+
+
+- created two menus, one for mobile and one for desktop (in most cases a single nav should work just fine as well)
+-
+  ```html
+    <div class="container justify-between mx-auto py-6 px-4 hidden md:flex">
+      <a href="/" class="hidden md:inline-block">
+        <Image loading="eager" height={30} src={logo} alt="Nirjan logo" />
+      </a>
+      <nav>
+        <ul class="flex gap-8 md:gap-10">
+          {
+            meunuItems.map((item) => (
+              <li>
+                <a class="text-primary-300 font-bold md:text-lg" href={item.url}>
+                  {item.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  
+    <div popover id="menu-popover" class="md:hidden">
+      <nav>
+        <ul class="flex flex-col gap-8 md:gap-10">
+          {
+            meunuItems.map((item) => (
+              <li>
+                <a class="text-primary-300 font-bold md:text-lg" href={item.url}>
+                  {item.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  
+    <div class="flex justify-end mb-16 mr-10 md:hidden">
+      <button
+        popovertarget="menu-popover"
+        class="bg-primary-800 rounded-full p-3 shadow-lg shadow-primary-800/50"
+      >
+        <span class="sr-only">Menu</span>
+        <Icon name="mdi:dots-horizontal" class="open-menu-icon w-6 h-6" />
+        <Icon name="mdi:close" class="close-menu-icon w-6 h-6" />
+      </button>
+    </div>
+  ```
+-
+- then setup the HTML popovers: https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using
+	- you need to setup a popover that has a unique ID and a popover target that uses the unique ID
+	- by default, the popover will be hidden and get shown when you click on the popover target
+	- it will have the following default styles as well
+	-
+	  ```css
+	  [popover] {
+	    position: fixed;
+	    inset: 0;
+	    width: fit-content;
+	    height: fit-content;
+	    margin: auto;
+	    border: solid;
+	    padding: 0.25em;
+	    overflow: auto;
+	    color: CanvasText;
+	    background-color: Canvas;
+	  }
+	  
+	  ```
+-
+- you can style it with your own CSS when the popover is closed or open with the popover selectors
+-
+  ```css
+    [popover] {
+      @apply px-6 py-6 min-w-[50%] min-h-[50%] to-background-500 bg-background-900 rounded-3xl shadow-xl shadow-background-600/20 inset-[unset] right-4 bottom-32;
+    }
+  
+    [popover]:popover-open {
+      @apply flex items-center justify-center;
+    }
+  
+  ```
+- You can also style the background of a popover with the ::backdrop psuedo element selector
+-
+  ```css
+  ::backdrop {
+    backdrop-filter: blur(3px);
+  }
+  
+  ```
+-
+- You can use CSS selectors to show and hide different icons when the popover is visible and when the popover is hidden
+-
+  ```css
+    [popover] ~ div [popovertarget="menu-popover"] {
+      .open-menu-icon {
+        @apply inline-block;
+      }
+  
+      .close-menu-icon {
+        @apply hidden;
+      }
+    }
+  
+    [popover]:popover-open ~ div [popovertarget="menu-popover"] {
+      .open-menu-icon {
+        @apply hidden;
+      }
+  
+      .close-menu-icon {
+        @apply inline-block;
+      }
+    }
+  ```
+-
+- You can also animate the popover using an animation keyframe, you will only be able to animate the entrance with this method though because it will set display to none when exiting immediately
+-
+  ```css
+  [popover]:popover-open {
+      animation: flip-in-hor-bottom 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        both;
+    }
+  
+   @-webkit-keyframes flip-in-hor-bottom {
+          0% {
+            -webkit-transform: rotateX(80deg);
+            transform: rotateX(80deg);
+            opacity: 0;
+          }
+          100% {
+            -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+            opacity: 1;
+          }
+        }
+        @keyframes flip-in-hor-bottom {
+          0% {
+            -webkit-transform: rotateX(80deg);
+            transform: rotateX(80deg);
+            opacity: 0;
+          }
+          100% {
+            -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+            opacity: 1;
+          }
+        }
+  ```
+-
+- You can also use CSS transitions to animate popovers but it will only work on browsers that support using transitions with the display property: https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using#animating_popovers
+-

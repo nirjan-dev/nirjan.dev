@@ -21,6 +21,11 @@ const blogCollection = defineCollection({
           "design",
           "performance",
           "devtools",
+          "migration",
+          "android",
+          "capacitor",
+          "mobile-development",
+          "html",
         ])
       ),
       image: z

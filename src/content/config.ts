@@ -26,6 +26,7 @@ const blogCollection = defineCollection({
           "capacitor",
           "mobile-development",
           "html",
+          "career",
         ])
       ),
       image: z

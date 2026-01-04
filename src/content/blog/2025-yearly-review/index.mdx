@@ -1,0 +1,89 @@
+---
+title: "Big life updates, Joy of simplicity, Coding & AI and a New job: 2025 review."
+excerpt: "2025 really felt like multiple years rolled up into one. Things seem to be moving so fast but I still feel cautiously optimistic as well."
+publishDate: "2026-01-04"
+tags: ["review"]
+ogImage: "./og-image.png"
+---
+
+## Big life update
+I made some major decisions in my personal life in 2025. I decided to get married and to move to Spain in 2026. I knew I wanted to move from Nepal at some point but I hadn't decided where to move. 
+
+I'm a classic over-thinker so I might've spent way too long deciding on which country to move to but ultimately Spain had a nice balance of everything I wanted (a safe country with great weather and a good quality of life). 
+
+I realize how fortunate I am to be able to make this move at all and I hope it will turn out well. 
+
+## Joining Athlos
+I joined [Athlos](https://Athlos.gg/) in February and spent the year working on the Athlos tournament platform. Athlos let's game studios seamlessly integrate a complete tournament platform into their games (includes both a dashboard to manage tournaments and an embedded frontend that players can interact with to compete in tournaments).
+
+It was a interesting to work exclusively as a frontend developer after a last 3 years as a fullstack developer. I still prefer to have full ownership over the products that I'm building and being able to ship a full feature from scratch feels great but I enjoyed collaborating with other people again as well. I got to work with lots of talented backend developers at Athlos so it was great to learn from them and also collaborate with another frontend developer and designer too.
+
+These were some of the most fun and rewarding things I got to work on with Athlos this year:
+  - Introducing the team to storybook for documenting our in-house component library and redesigning our theming token system using css variables. This enabled us to make our themes more customizable for each client.
+  - Launching a few key features requested by our clients like:
+    - Supporting player created events (which let's studios invite players who can then use event templates and host their own tournament event)
+    - Adding a billing section to the dashboard so studios can easily see their user metrics and get their billing estimates
+    - Creating a new standalone web app product where players can take part in Counter Strike 2 tournaments (previously we only had a webview embed that clients could add to their mobile game). It was an interesting challenge to extract our core logic for the webview embed into a shared package so we could use a monorepo for different platforms (webview and standalone web app).
+ - Refactoring our lobby queue system (so players can seamlessly join a game lobby, find matches and accept a match with realtime notifications for each step)
+ - Making improvements to our developer experience with:
+  - Automatic language translations with the google cloud translate API (our webview embed project needs to support multiple languages)
+  - Adding some end to end tests with playwright so we could make new changes to our dashboard and webview project with more confidence
+  - Introduced product analytics and error tracking (with screen-recordings) using Posthog analytics
+  - Used Cloudflare workers and Grafana to create a request log dashboard so we could have better insights into all our frontend requests
+
+## Clickout consulting
+In my free time, I also took on some consulting work for Clickout Marketing as well. Clickout is a global multi channel marketing company with a focus on SEO and affiliate marketing. 
+
+I worked as a freelancer for them and was tasked with building some internal tools to help them be more productive with their day to day operations. I also built some automation-workflows to automate a lot of tedious manual work they were doing previously.
+
+These are some of the things that I worked on for clickout this year:
+- Introducing the team to n8n workflows and building out some core reusable sub-workflows (better error tracking, markdown converters, wordpress data extraction, etc) and some custom agentic workflows (SEO brief generation, position tracking report generation, etc). This helped automate a significant amount of boring manual work. It has been a huge success within the internal teams and now they're automating 96+ hours of work every day (with more automation-workflows to come in 2026).
+- Created a custom internal web app for the marketing team. It lets them track their partner outreach more efficiently (automatically getting stats about potential partner sites and their contact information, syncing the outreach status to Monday CRM, finding new partners to reach out to based on the tracked keywords, etc). It also helps them track the SEO rankings for their internal sites automatically without checking multiple SEO tools.
+
+## AI assisted coding and joy of simplicity
+2025 was also the first year where I (along with many other developers) actually started using AI tools in my day to day work. I have mixed feelings about the state of AI assisted coding currently. 
+
+They can be incredibly helpful at times when you have a clear idea of what needs to be done and you just need to write a bunch of boilerplate code. It can be magical to just use a few prompts and have a complete feature ready without the hours of tedious manual coding you would need previously. 
+
+It has also enabled me to be more ambitious with the type of projects I take on. It feels like I have a pretty competent pair programming partner who I can consult with and talk through ideas about different types of projects (including the ones that I have very little experience with). I don't have to do countless hours of research before starting something that I'm unfamiliar with. AI tools like claude can be great to bounce different alternative ideas around with and figure out the best approach to take. 
+
+But, sometimes it can be infuriating to work with AI. I appreciate the ability to quickly vibe code interactive prototypes, they are a massive improvement over just regular Jira tickets or static designs and tell me a lot more about what product needs to be like. However, trying to make a vibe coded app into something that's robust, secure and performant still feels like too much work. In most cases you're probably better off just starting from scratch. 
+
+I also don't get into the same type of flow when working with an AI agent because I have to wait for it to finish and then reviewing the massive amount of code it spits out (they sure do love to use a lot of code) can almost be a bigger bottleneck than just writing the code myself.
+
+So, I think there's still a lot of value in AI-assisted coding but you need to follow some best practices to get the most out of it and luckily those best practices tend to be the same ones you'd use when improving your own code too. Some of the things that I've found to be helpful are:
+ - Have a clearer idea of the actual problem you're trying to solve first. AI can help you write a pretty decent spec which you can use as a high level plan for yourself or have it try implementing some isolated parts of it.
+ - Have small focused commits. There's nothing worse than having to review a massive code change made by an Agent. Some of the newer models are capable of one-shotting incredible apps but just because they can doesn't mean you should let them do it. It's much better to have them work on smaller features or parts of a feature, review it and then move on to something else.
+- Use as much deterministic tooling as possible. You can use AI to get a good summary of code changes but you should take it with a grain of salt. It's not a replacement for actually reading the code. Instead, to make sure the code is actually correct, use tried and tested tools that are deterministic like linters, type checkers, unit tests, end to end tests, etc.
+- Introduce constraints whenever possible. Use things like an `agents.md` file or add specific instructions in the spec to only allow the Agent to do certain things. Be clear with your tech stack and patterns you want to follow. This is the reason why I rarely start a project with AI, I often find it much more productive to establish a good foundation myself and once I run into repetitive tasks, I use AI to help me with that.
+
+I've also grown to appreciate simplicity a lot more because of AI-assisted coding. I know that we should always optimize for reading code more than writing code because you will be reading it much more often than writing it. But, in practice it can be hard to remember this and you end up trying to create abstractions and use dependencies that let you write code faster which often makes it harder to read and understand. 
+
+This year I read the [**Let's go**](https://lets-go.alexedwards.net/) and [**Let's go further**](https://lets-go-further.alexedwards.net/) books by Alex Edwards and it made me appreciate the simplicity of golang and how great it can feel to write simple code that is easy to understand. This has the added benefit of making it easier for AI agents to understand your codebase without needing additional context about different abstractions or dependencies. So, in 2026 one of my goals is to write more simple code and think a lot more critically about the abstractions and dependencies I use.
+
+## Learning and projects
+I finished a few different courses this year and tried to understand the tools and languages I use in a deeper way. Some of the courses I took were:
+- [Joy of React](https://www.joyofreact.com/) by Josh W Comeau (a fantastic course on how React actually works)
+- [**Let's go**](https://lets-go.alexedwards.net/) and [**Let's go further**](https://lets-go-further.alexedwards.net/) books by Alex Edwards (great books on the Go programming language and it's standard library to build web servers)
+- [Total Typescript Essentials](https://www.totaltypescript.com/books/total-typescript-essentials) by Matt Pocock (Matt is probably the go-to guy for Typescript and his free TS course is fantastic and much more detailed than any other typescript essentials course)
+- [Dev Productivity](https://frontendmasters.com/courses/developer-productivity-v2/) and [Blazing fast JavaScript](https://frontendmasters.com/courses/blazingly-fast-js/introduction/) by The Primagen (The Primagen needs no introduction, his courses are fantastic and very detailed)
+- [Complete Intro to SQLite](https://frontendmasters.com/courses/sqlite/) by Brian Holt (Sqlite can be a great tool for many different projects where you don't need a full blown database)
+- [Front-End System Design](https://frontendmasters.com/courses/frontend-system-design/) by Evgenii Ray (it was nice to go deeper on some of the common patterns and practices used in front-end development)
+- Some [Vueschool](https://vueschool.io/) courses (like TDD with Vitest, Vue Component Design and Nuxt data fetching)
+
+Besides this, I also took some time to learn vim motions and moved from VSCode to Zed and started using zellij for my session management (small things like this probably don't make you a better developer, but they do make you more productive and make coding more fun). I also tried out the Symfony PHP framework and some Ruby on Rails but decided they weren't for me (going to stick with Typescript and Golang for now).
+
+While it's important to keep learning, building projects is also important. They help you learn by doing and solidify your knowledge. I worked on these side projects in 2025:
+- [*Servomon*](https://github.com/nirjan-dev/servomon/): A selfhostable homely monitoring app built with Nuxt and Deno. The dashboard is built with Nuxt and communicates with a Deno client that runs on the server using websockets.
+- [*Rosetide*](https://github.com/nirjan-dev/rosetide): A  privacy focused secure period tracking app. Stores all data locally and let's users track their periods and get an overview of their cycle and a prediction of their next period.
+- [*Evergreen Plants*](http://evergreenplants.shop/): An online store for the best plant nursery in Nepal (I'm totally not biased because my girlfriend runs the nursery).
+- [*Remote Dev Jobs V2*](https://remotedevjobs.net/): Updated the job site that I run for remote developers to Nuxt 4 and Nuxt UI 4 and drizzle (from Prisma).
+
+## Coding in 2026
+2026 is shaping up to be another year filled with huge potential changes in the world of coding. There are lots of uncertainties but I feel like there's some exciting opportunities as well. The AI Genie is truly out of the bottle now and there's no going back, however we can choose how we use this tool (at the end of the day it's still just another tool in the toolbox). 
+
+Personally, I want to focus on making my tech stack simpler (less abstractions, minimal dependencies and solid fundamentals). I'm planning on using a set of core technologies which are tried and trusted and simple (Golang, Solidjs, Typescript, Postgres, Docker, Linux). I have a lot of interesting ideas that I want to turn into actual products. 
+
+Apart from coding on my side projects, I also want to spend my free time doing some more writing and open source work. I realize that making any sort of money from writing about tech is pretty much impossible now but I want to write mainly as a way of clearing my head and a way of solidifying some of my opinions and ideas. I want to become a better coder too so for that want to start reading a lot more open-source code. Being able to get some actual feedback from people with more experience than me is important too so I want to find a few open source projects that I love using and contribute back to them. 
+
+I can't predict the future and have no control over how things are going to shake up in the tech world. I don't know how AI will change things in 2026 but I can control how I spend my time and what things I chose to focus on so hopefully it's going to be another year of working on some cool shit, learning some amazing things and growing as a person and a developer.

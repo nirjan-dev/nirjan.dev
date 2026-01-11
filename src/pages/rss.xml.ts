@@ -17,9 +17,9 @@ export async function GET(context: any) {
   });
 
   return rss({
-    title: "Nirjan's Blog about coding and tech",
+    title: "Nirjan's Coding & Tech Blog",
     description:
-      "I write about different web technologies like HTML, CSS, JavaScript, Svelte, Vue, Storybook, Node.js, SVG, WebGL, web animation and best coding practices.",
+      "I write about building fast, secure and user-friendly apps on the web and cover different web technologies like HTML & CSS, JavaScript, TypeScript, Svelte, React.js, Golang, Postgres & SQLite.",
     site: context.site,
     items: blog.map((post) => ({
       title: post.data.title,

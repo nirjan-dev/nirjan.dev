@@ -4,7 +4,7 @@ Nirjan Khadka's personal website and software development blog, built with Astro
 
 ## Local setup
 
-Use Node.js 22.1.0 (`.nvmrc`) and pnpm 9, matching the GitHub workflows.
+Use Node.js 24 LTS (`.nvmrc`) and pnpm 9, matching the GitHub workflows. `package.json` pins Vercel builds to `24.x`.
 
 ```sh
 pnpm install

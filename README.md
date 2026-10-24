@@ -22,7 +22,7 @@ The development server runs at `http://localhost:4321`.
 
 ## Content locations
 
-- `src/pages/index.astro` and `src/pages/about.astro`: current positioning, recent work and personal profile.
+- `src/pages/index.astro` and `src/pages/about.astro`: current positioning and recent work. The About page curates public project code and working entry points; keep descriptions scoped to implemented behaviour.
 - `src/pages/contact.astro`: contact details and the existing Web3Forms contact form. Public email: `hi@nirjan.dev`.
 - `src/utils/personSchema.ts`: structured person metadata; keep its title and description aligned with the profile pages.
 - `src/layouts/PageLayout.astro`: shared layout and website schema.
@@ -35,6 +35,6 @@ Keep experience claims scoped to the actual work: 7+ years refers to overall sof
 
 ## Deployment
 
-The checked-in GitHub Actions workflows target Vercel: pushes to `main` run `.github/workflows/production.yml`; pushes to other branches run `.github/workflows/preview.yaml`. They pull Vercel configuration, build artifacts, run Playwright, then deploy prebuilt artifacts. `vercel.json` supplies response headers.
+Production publishing uses Vercel's native GitHub integration: pushes to `main` deploy to `nkwebdevs-projects/nirjan-dev`, with `nirjan.dev` assigned to production. The project and `package.json` both use Node.js 24.x. Check the Vercel deployment for the pushed commit and then the public site; a successful local build is not deployment proof. `vercel.json` supplies response headers.
 
-These workflows require a configured Vercel project and GitHub secrets `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` and `VERCEL_TOKEN`. The deploy jobs run on separate runners but do not explicitly install the Vercel CLI; the artifact upload also does not explicitly include hidden files. Confirm CLI availability and complete `.vercel` artifact transfer before relying on this route. Repository configuration alone does not establish that a live deployment is healthy or that Vercel's separate Git integration is enabled.
+The separate GitHub Actions workflows (`production.yml` and `preview.yaml`) also attempt prebuilt Vercel deployments using `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` and `VERCEL_TOKEN`. Their status is separate from the native production deployment. Before relying on that additional route, confirm Vercel CLI availability on the deploy runner and complete transfer of the hidden `.vercel` artifacts.

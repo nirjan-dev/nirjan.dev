@@ -31,12 +31,12 @@ import { personSchema } from "~/utils/personSchema";
         alt="Nirjan Khadka's profile picture"
       />
       <p>
-        I'm Nirjan, a senior software engineer focused on backend services and
-        full-stack products. Over 7+ years in software development, I've worked
-        across APIs, databases, user interfaces and the tooling needed to keep
-        them running. My main tools are TypeScript, JavaScript, Node.js and
-        Postgres. I also build production Go services and work with Vue, Nuxt
-        and React on the frontend.
+        I'm Nirjan, a senior software engineer based in Nepal. I build backend
+        services and full-stack products, and like following a feature from its
+        data model and API through to the interface and production behaviour.
+        I have 7+ years of software development experience. These days I work
+        mainly with TypeScript, Node.js and Postgres, as well as production Go
+        services and frontend work with Vue, Nuxt and React.
       </p>
       <p>
         I'm based in Nepal and open to sponsored relocation or remote work
@@ -68,6 +68,49 @@ import { personSchema } from "~/utils/personSchema";
           reduced scraping costs by 80%.
         </li>
       </ul>
+      <h2>Selected projects</h2>
+      <p>
+        Outside work, I build tools I want to use myself. These personal
+        projects show different parts of how I work; the public code is linked
+        below.
+      </p>
+      <h3>
+        <a href="https://github.com/nirjan-dev/remotedevjobs-v2">
+          RemoteDevJobs
+        </a>
+      </h3>
+      <p>
+        A remote developer job board built with Nuxt 4, PostgreSQL and Drizzle.
+        It brings several job feeds into a relational data model, with source
+        adapters, a database-backed ingestion queue and filtered, server-rendered
+        job listings.
+        <a href="https://remotedevjobs.vercel.app">Visit the job board</a>.
+      </p>
+      <h3>
+        <a href="https://github.com/nirjan-dev/safecap">SafeCap</a>
+      </h3>
+      <p>
+        A Chrome extension for recording a screen, window or tab, built with Vue
+        and WXT. Recording chunks are streamed to the browser's Origin Private
+        File System, with library metadata kept separately in Chrome storage.
+        <a href="https://chromewebstore.google.com/detail/safecap/jbghdaimglclkedejlobbpmfiealoepf">
+          View it on the Chrome Web Store</a>.
+      </p>
+      <h3>
+        <a href="https://github.com/nirjan-dev/litsi">Litsi</a>
+      </h3>
+      <p>
+        A video-chat prototype with a Nuxt WebSocket signalling service and
+        WebRTC audio and video. Room membership lives in server memory; calls
+        can use a TURN relay when a direct peer connection is not possible.
+        <a href="https://litsi.fly.dev">Try the prototype</a>.
+      </p>
+      <p>
+        I've also built
+        <a href="https://github.com/nirjan-dev/rosetide">Rosetide</a>, a
+        local-first period tracker with browser-local data and CSV backup.
+      </p>
+
 
       <h2>How I like to work</h2>
       <ul>
@@ -93,13 +136,11 @@ import { personSchema } from "~/utils/personSchema";
         systems fit together, but I still care just as much about a useful
         interface and a good experience for the person using it.
       </p>
-     <p>
-         Besides
-               coding, I'm also a huge cinephile and I love reading books or listening
-               to music (mostly hiphop). I'm deeply curious about history, mythology
-               and storytelling. I enjoy playing football/futsal whenever I can and I'm
-               a loyal Manchester United Fan.
-     </p>
+      <p>
+        Away from coding, I'm a cinephile and enjoy books, history, mythology and
+        storytelling. I listen to a lot of hip-hop, play football or futsal
+        whenever I can, and support Manchester United.
+      </p>
     </Prose>
   </div>
 </PageLayout>

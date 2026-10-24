@@ -43,7 +43,7 @@ export const personSchema: Person = {
     "https://linkedin.com/in/nirjankhadka",
   ],
   gender: "male",
-  jobTitle: "Fullstack Product Developer",
+  jobTitle: "Senior Software Engineer — Backend & Full Stack",
   description:
-    "Building apps on the web that are fast, user friendly, accessible and secure. I work with Typescript, React.js, Svelte, Golang, Postgres and SQLite",
+    "Senior software engineer with 7+ years in software development, building backend services and full-stack products with TypeScript, Node.js, Go, Postgres, Vue, Nuxt and React. Based in Nepal.",
 };

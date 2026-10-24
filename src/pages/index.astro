@@ -12,13 +12,13 @@ let featuredPosts = await getEntries(
 
 <PageLayout
   seo={{
-    title: "Nirjan Khadka | Fullstack Product Developer",
+    title: "Nirjan Khadka | Senior Software Engineer — Backend & Full Stack",
     description:
-      "Building apps on the web that are fast, user friendly, accessible and secure. I work with Typescript, React.js, Svelte, Golang, Postgres and SQLite",
+      "Senior software engineer building backend services and full-stack products with TypeScript, Node.js, Go and Postgres. Based in Nepal, open to sponsored relocation or eligible remote work.",
     canonical: "https://nirjan.dev",
     openGraph: {
       basic: {
-        title: "Nirjan Khadka's Coding & Tech Blog",
+        title: "Nirjan Khadka | Backend & Full-Stack Engineer",
         type: "website",
         image: "https://nirjan.dev/images/site-og.png",
         url: "https://nirjan.dev",
@@ -29,24 +29,43 @@ let featuredPosts = await getEntries(
   <h1 class="lg:text-6xl text-4xl font-bold mb-6">Hi, I'm Nirjan&nbsp;👋🏽</h1>
 
   <p class="text-xl lg:text-2xl max-w-prose mb-6 lg:mb-12">
-    I build software that's <strong class="text-copy-50 underline">fast</strong>, <strong
-      class="text-copy-50 underline">user-friendly</strong
-    > and <strong class="text-copy-50 underline">secure</strong>. My focus is on
-    solving real user problems with solid programming fundamentals.
+    I'm a <strong class="text-copy-50">senior software engineer</strong> building
+    backend services and full-stack products, with 7+ years in software development.
+    I work mainly with TypeScript, Node.js and Postgres, alongside production Go
+    services and interfaces built with Vue, Nuxt and React.
     <br /><br />
-
-    I have experience in fullstack web apps, SEO-optimized websites,
-    user-friendly mobile apps, and intuitive CLI tools. So Let's find how we can deliver the<strong
-      class="text-copy-50 underline"
-    >
-        best experience
-    </strong> for your users.
+    I like owning a feature from its data model and API to the interface people
+    use, then making it easier to operate. I'm based in Nepal and open to
+    sponsored relocation or remote work where I'm legally eligible.
   </p>
 
   <a
     class="inline-block py-2 lg:py-4 font-semibold bg-primary-700 px-3 lg:px-6 rounded-md text-copy-300 text-lg lg:text-xl focus:text-copy-50 focus:bg-primary-600 hover:text-copy-50 hover:bg-primary-600 transition-colors"
     href="/contact">Let's work together</a
   >
+
+  <section class="py-12 lg:py-20 pb-6 lg:pb-12" aria-labelledby="recent-work">
+    <h2 id="recent-work" class="text-2xl font-bold mb-3">Recent work</h2>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-8 py-4 mb-4">
+      <li class="py-6 px-8 bg-background-950 shadow-lg shadow-background-950/20 grid gap-2 rounded-lg h-full">
+        <h3 class="text-xl font-bold">Backend systems at Clickout</h3>
+        <p>
+          Fixed out-of-memory failures in queue workers, moved execution and
+          binary storage to R2, and built operational dashboards and tracing.
+          I also separated permissions into a standalone API with roles and audit history.
+        </p>
+      </li>
+      <li class="py-6 px-8 bg-background-950 shadow-lg shadow-background-950/20 grid gap-2 rounded-lg h-full">
+        <h3 class="text-xl font-bold">Product delivery at Athlos</h3>
+        <p>
+          Built a tournament-creation MVP used by 92+ creators, billing for
+          6+ tenants, and white-label interfaces in six languages. Kept the
+          frontend testable with Storybook and Playwright.
+        </p>
+      </li>
+    </ul>
+    <a href="/about" class="inline-block py-2">More about my work and approach</a>
+  </section>
 
   <section class="py-12 lg:py-20 pb-6 lg:pb-12">
     <h2 class="text-2xl font-bold mb-3">Featured Posts</h2>

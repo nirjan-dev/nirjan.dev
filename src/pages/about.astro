@@ -6,14 +6,14 @@ import { personSchema } from "~/utils/personSchema";
 
 <PageLayout
   seo={{
-    title: "Bio for Nirjan Khadka | Full-Stack Product Developer",
+    title: "About Nirjan Khadka | Senior Software Engineer — Backend & Full Stack",
     description:
-      "I'm Nirjan, a full-stack product developer specializing in building fast, intuitive, secure and privacy-focused web applications. I'm passionate about building better experiences on the open web that are fast and secure but also accessible and user friendly. I'm a life-longer learner and problem solver who values simplicity and deeply understanding my tools, my technical stack and the user's problems.",
+      "I'm Nirjan, a senior software engineer with 7+ years building web products, backend services and operational tooling. Based in Nepal, open to sponsored relocation or eligible remote work.",
     canonical: "https://nirjan.dev/about",
     openGraph: {
       basic: {
         title:
-          "Bio for Nirjan Khadka - Full-Stack Product Developer",
+          "About Nirjan Khadka | Backend & Full-Stack Engineer",
         type: "website",
         image: "https://nirjan.dev/images/site-og.png",
         url: "https://nirjan.dev/about",
@@ -24,125 +24,75 @@ import { personSchema } from "~/utils/personSchema";
 >
   <div class="max-w-prose mx-auto py-6 px-3 lg:text-lg">
     <Prose>
+      <h1>About me</h1>
       <img
         class="w-32 h-32 mb-1 mr-6 rounded-full float-left"
         src="/images/profile.webp"
         alt="Nirjan Khadka's profile picture"
       />
       <p>
-        I'm Nirjan, a full-stack product developer specializing in building fast, intuitive, secure and privacy-focused web applications. I'm passionate about building better experiences on the open web that are fast and secure but also accessible and user friendly. I'm a life-longer learner and problem solver who values simplicity and deeply understanding my tools, my technical stack and the user's problems.
-
+        I'm Nirjan, a senior software engineer focused on backend services and
+        full-stack products. Over 7+ years in software development, I've worked
+        across APIs, databases, user interfaces and the tooling needed to keep
+        them running. My main tools are TypeScript, JavaScript, Node.js and
+        Postgres. I also build production Go services and work with Vue, Nuxt
+        and React on the frontend.
+      </p>
+      <p>
+        I'm based in Nepal and open to sponsored relocation or remote work
+        where I'm legally eligible. You can reach me at
+        <a href="mailto:hi@nirjan.dev">hi@nirjan.dev</a>.
       </p>
 
-      <h2>What I aim for in any software I build</h2>
+      <h2>Work I've been doing</h2>
       <ul>
         <li>
-          <h3>Good User experience</h3>
-          <ul>
-            <li>Intuitive interface</li>
-            <li>Accessible</li>
-            <li>Bloat free</li>
-            <li>Cohesive brand</li>
-            <li>Simple and Clear</li>
-          </ul>
+          <strong>Clickout:</strong> fixed out-of-memory failures in queue-mode
+          n8n workers, moved execution and binary storage to R2 with retention
+          controls, and built tracing and operational dashboards. I moved
+          permissions into a standalone API with roles, audit history and
+          impersonation, and worked on production Go feed parsing and AI
+          workflow guardrails, evaluations and fallback sourcing.
         </li>
         <li>
-          <h3>Good performance</h3>
-          <ul>
-            <li>Fast loading times</li>
-            <li>Fast time to first interaction</li>
-            <li>Fast feedback cycle</li>
-            <li>Fast for majority of users</li>
-          </ul>
+          <strong>Athlos (February–December 2025):</strong> worked on a B2B
+          tournament SaaS, including a creation-flow MVP used by 92+ creators,
+          billing for 6+ tenants, white-label themes and six-language support.
+          I introduced Storybook and Playwright, and used PostHog and Grafana
+          to understand product usage and WebSocket behaviour.
         </li>
         <li>
-          <h3>Secure</h3>
-          <ul>
-            <li>Free from common vulnerabilities</li>
-            <li>Follow best practices</li>
-            <li>User comes before developer experience</li>
-            <li>Proper backups and plans for outages</li>
-            <li>Limited downtime - try to aim for 99.99% SLAs</li>
-            <li>Prevent issues from depenencies</li>
-          </ul>
+          <strong>Gfinity (December 2020–September 2024):</strong> migrated
+          services, including Go services, from GCP to Fly.io, reducing hosting
+          costs by 93%. I also built Node.js stock and price scraping that
+          reduced scraping costs by 80%.
         </li>
       </ul>
-      <h2>My sofware development values</h2>
-      <ul>
-        <li>Main priorities: UX, Performance and Security</li>
-        <li>Outcome over tools and techniques</li>
-        <li>Focuses on patterns over technology</li>
-        <li>Long-term proven technologies instead of short-term trends</li>
 
-        <li>
-          Avoid shitting on other tech and people and try to spread positivity
-          and excitement
-        </li>
-        <li>Give people the benefit of doubt</li>
-        <li>Learn in public</li>
-        <li>Build in public</li>
-        <li>Proponent of Self hosting and owning your data</li>
-        <li>Linux enthusiast</li>
-        <li>Ship quick and then iterate</li>
-      </ul>
-      <h2>Core patterns I try to follow</h2>
+      <h2>How I like to work</h2>
       <ul>
         <li>
-          Good UX<ul>
-            <li>Good understanding of UI/UX</li>
-            <li>Accessibility</li>
-            <li>Understanding Product management, branding and marketing</li>
-            <li>Testing for end-user happiness</li>
-          </ul>
+          Start with the user's problem. Keep interfaces clear, accessible and
+          fast, and follow a feature through from the data model to the screen.
         </li>
         <li>
-          Good Performance<ul>
-            <li>Benchmarking and profiling</li>
-            <li>Good understanding of devtools</li>
-            <li>Good understanding of fundamentals of the platform</li>
-            <li>Performance oriented CI/CD practices</li>
-            <li>RUM metrics collection</li>
-            <li>Database query optimizations</li>
-            <li>Observability and tracing</li>
-            <li>Avoid Hasty Abstractions</li>
-          </ul>
+          Understand the fundamentals before adding abstractions. Prefer simple,
+          well-understood tools and use profiling, debugging and tests to guide changes.
         </li>
         <li>
-          Security<ul>
-            <li>Implement the best security practices for the platform</li>
-            <li>Good backup solutions</li>
-            <li>Understand laws and regulations for user privacy</li>
-            <li>Good data storage practices</li>
-            <li>Proper monitoring and alerting</li>
-            <li>Proper dependency auditing</li>
-            <li>
-              Own the data as much as possible instead of giving it to third
-              parties
-            </li>
-          </ul>
+          Treat security, privacy, backups and observability as part of the
+          product, not something to bolt on after shipping.
+        </li>
+        <li>
+          Ship small changes, learn from feedback and iterate. Give teammates
+          the benefit of the doubt and share what I learn.
         </li>
       </ul>
-      <h2>Fundamental technologies I'm interested in</h2>
-      <ul>
-        <li>Linux</li>
-        <li>Docker</li>
-        <li>GIT</li>
-        <li>SQL</li>
-        <li>Assembly*</li>
-        <li>Web Protocols: HTTP, HTTPs, TLS, UDP, Web sockets</li>
-        <li>Accessibility</li>
-        <li>UI/UX design</li>
-        <li>Relational database modeling</li>
-        <li>Observability</li>
-        <li>Debuggers</li>
-        <li>Profillers</li>
-        <li>Web Platform</li>
-        <li>Marketing and Branding</li>
-        <li>Observability and Monitoring</li>
-        <li>Infrastructure as Code</li>
-        <li>Automation</li>
-        <li>Testing</li>
-      </ul>
+      <p>
+        I enjoy Linux, self-hosting and owning my data. I'm interested in how
+        systems fit together, but I still care just as much about a useful
+        interface and a good experience for the person using it.
+      </p>
      <p>
          Besides
                coding, I'm also a huge cinephile and I love reading books or listening

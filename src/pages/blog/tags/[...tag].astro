@@ -39,7 +39,7 @@ export const getStaticPaths = (async () => {
   seo={{
     title: "Nirjan's blog focusing on coding and tech",
     description:
-      "I make websites and apps that are fast, user friendly, accessible and secure. I work with Typescript, HTML & CSS, Vue, Svelte, Node.js and Golang.",
+      `Articles tagged ${tag} from Nirjan Khadka's blog on backend and full-stack development, web performance, accessibility and building products.`,
     canonical: "https://nirjan.dev/blog",
     openGraph: {
       basic: {
@@ -56,7 +56,7 @@ export const getStaticPaths = (async () => {
       url: "https://nirjan.dev/blog",
       name: "Nirjan's Tech Blog",
       description:
-        "I make websites and apps that are fast, user friendly, accessible and secure. I work with Typescript, HTML & CSS, Vue, Svelte, Node.js and Golang.",
+        `Articles tagged ${tag} from Nirjan Khadka's blog on backend and full-stack development, web performance, accessibility and building products.`,
       inLanguage: "en-US",
       dateModified: new Date(
         blogPosts[0].data.updateDate ?? blogPosts[0].data.publishDate

@@ -83,8 +83,9 @@ import { personSchema } from "~/utils/personSchema";
         A remote developer job board built with Nuxt 4, PostgreSQL and Drizzle.
         It brings several job feeds into a relational data model, with source
         adapters, a database-backed ingestion queue and filtered, server-rendered
-        job listings.
-        <a href="https://remotedevjobs.vercel.app">Visit the job board</a>.
+        job listings. Ingestion and queue execution are authenticated,
+        POST-only operations, separate from the public read surface.
+        <a href="https://remotedevjobs.net">Visit the job board</a>.
       </p>
       <h3>
         <a href="https://github.com/nirjan-dev/safecap">SafeCap</a>
@@ -93,6 +94,8 @@ import { personSchema } from "~/utils/personSchema";
         A Chrome extension for recording a screen, window or tab, built with Vue
         and WXT. Recording chunks are streamed to the browser's Origin Private
         File System, with library metadata kept separately in Chrome storage.
+        It includes a guided microphone setup and optional on-device AI
+        summaries and chapters via Chrome's built-in Summarizer.
         <a href="https://chromewebstore.google.com/detail/safecap/jbghdaimglclkedejlobbpmfiealoepf">
           View it on the Chrome Web Store</a>.
       </p>
@@ -102,13 +105,30 @@ import { personSchema } from "~/utils/personSchema";
       <p>
         A video-chat prototype with a Nuxt WebSocket signalling service and
         WebRTC audio and video. Room membership lives in server memory; calls
-        can use a TURN relay when a direct peer connection is not possible.
-        <a href="https://litsi.fly.dev">Try the prototype</a>.
+        can use a TURN relay when a direct peer connection is not possible,
+        with capability-bound credential issuance and documented operating
+        limits for the single-instance prototype.
+        <a href="https://litsi.fly.dev">Try the prototype</a> or
+        <a href="https://litsi.nirjan.dev">read the documentation</a>.
+      </p>
+      <h3>
+        <a href="https://github.com/nirjan-dev/servomon">Servomon</a>
+      </h3>
+      <p>
+        A self-hosted Linux server monitor: a Deno agent reports metrics to a
+        Nuxt dashboard with live, stale and offline states, a 24-hour
+        retention window, and alerts over web push and Discord. Agents enroll
+        with pairing-code approval, and remote commands run over WebSocket
+        with single-use tickets and audit logging.
+        <a href="https://servomon.nirjan.dev">Read the documentation</a> or
+        <a href="https://servomon.nirjan.dev/demo">watch the demo</a>.
       </p>
       <p>
         I've also built
         <a href="https://github.com/nirjan-dev/rosetide">Rosetide</a>, a
-        local-first period tracker with browser-local data and CSV backup.
+        local-first period tracker with browser-local data, CSV backup and
+        installable offline support.
+        <a href="https://rosetide.net">Try the app</a>.
       </p>
 
 
